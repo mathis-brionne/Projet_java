@@ -29,10 +29,10 @@ public class Promotion_DAO extends DAO {
         return List_Promo;
     }
 
-    @Override
-    public void find(String key_Word) {
-    }
+    /* @Override
+     public void find(String key_word) {
 
+     }*/
     @Override
     public String toString()throws NullPointerException {
         String s =null;

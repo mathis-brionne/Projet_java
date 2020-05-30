@@ -29,9 +29,10 @@ public class Type_Cours_DAO extends DAO {
         return List_Type_Cours;
     }
 
-    @Override
-    public void find(String key_Word) {
-    }
+   /* @Override
+    public void find(String key_word) {
+
+    }*/
 
     @Override
     public String toString()throws NullPointerException {

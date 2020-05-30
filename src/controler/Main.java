@@ -1,5 +1,6 @@
 package controler;
 
+import model.Utilisateur;
 import view.Login;
 import view.application;
 
@@ -15,6 +16,9 @@ public class Main {
             System.out.println(n.getCause());
             System.out.println("Aucune donnée stocko en mémoire");
         }
+        Utilisateur test =new Utilisateur();
+        test= Users.find("user","JDOUDI@edu.ece.fr");
+        System.out.format("\nNom :%s \nPrenom :%s \nEmail :%s \nPassword :%s \nId:%d \nDroit :%d\n",test.getNom(),test.getPrenom(),test.getEmail(),test.getPassword(),test.getId(),test.getDroit());
 
         Enseignant_DAO Enseignants = new Enseignant_DAO();
         try{

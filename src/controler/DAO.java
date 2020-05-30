@@ -16,6 +16,6 @@ public abstract class DAO {
             SQLe.getErrorCode();
         }
     }
-    public abstract void find( String key_word);
+    //public abstract void find(String catergorie, String key_word);
     public abstract void setData();
 }

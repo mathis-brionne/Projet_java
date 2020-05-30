@@ -31,9 +31,10 @@ public class Seance_DAO extends DAO{
         return List_Seance;
     }
 
-    @Override
-    public void find(String key_Word) {
-    }
+   /* @Override
+    public void find(String key_word) {
+
+    }*/
 
     @Override
     public String toString()throws NullPointerException {

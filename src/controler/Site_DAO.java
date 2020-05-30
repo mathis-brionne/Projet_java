@@ -28,9 +28,10 @@ public class Site_DAO extends DAO {
         return List_Site;
     }
 
-    @Override
-    public void find(String key_Word) {
-    }
+   /* @Override
+    public void find(String key_word) {
+
+    }*/
 
     @Override
     public String toString()throws NullPointerException {

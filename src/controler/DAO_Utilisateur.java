@@ -32,8 +32,36 @@ public class DAO_Utilisateur extends DAO {
         return List_User;
     }
 
-    @Override
-    public void find(String key_Word) {
+
+    public Utilisateur find(String categorie, String key_Word) throws NullPointerException {
+        switch (categorie)
+        {
+            case "user":
+                for(Utilisateur i: List_User)
+                {
+                    if(i.getEmail().equals(key_Word))
+                    {
+                        return i;
+                    }
+                }
+                break;
+            case "nom":
+                for(Utilisateur i: List_User)
+                {
+                    if(i.getNom().equals(key_Word))
+                    {
+                        return i;
+                    }
+                }
+
+
+
+
+            default:
+                System.out.println("");
+                break;
+        }
+        return null;
     }
 
     @Override

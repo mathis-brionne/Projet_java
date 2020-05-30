@@ -32,10 +32,10 @@ public class Seance_Groupe_DAO extends DAO {
     }
 
 
-    @Override
+   /* @Override
     public void find(String key_word) {
 
-    }
+    }*/
 
     @Override
     public String toString()throws NullPointerException {

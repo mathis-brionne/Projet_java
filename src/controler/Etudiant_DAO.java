@@ -28,10 +28,10 @@ public class Etudiant_DAO extends DAO {
     public List<Etudiant> getList_Etudiant() {
         return List_Etudiant;
     }
+   /* @Override
+    public void find(String key_word) {
 
-    @Override
-    public void find(String key_Word) {
-    }
+    }*/
 
     @Override
     public String toString()throws NullPointerException {
