@@ -1,13 +1,6 @@
-package controler;
+package model;
 
-import model.DaoFactory;
-import model.Seance;
-import model.Utilisateur;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +18,15 @@ public class Seance_DAO extends DAO{
         }
         List_Seance = new ArrayList<Seance>();
         this.setData();
+    }
+    public Seance finds(int semaine , int Id_seance){
+        Seance result = new Seance() ;
+        for (Seance l: List_Seance) {
+            if(l.getSemaine() == semaine && Id_seance == l.getId_Seance()){
+                result = l;
+            }
+        }
+        return result;
     }
 
     public List<Seance> getList_Seance() {
@@ -58,8 +60,8 @@ public class Seance_DAO extends DAO{
                 int id_seance = rs.getInt("ID");
                 int semaine = rs.getInt("SEMAINE");
                 /// DATE
-                int heure_debut = rs.getInt("HEURE_DEBUT");
-                int heure_fin = rs.getInt("HEURE_FIN");
+                String heure_debut = rs.getString("HEURE_DEBUT");
+                String heure_fin = rs.getString("HEURE_FIN");
                 int etat = rs.getInt("ETAT");
                 int id_cours = rs.getInt("ID_COURS");
                 int id_type = rs.getInt("ID_TYPE");

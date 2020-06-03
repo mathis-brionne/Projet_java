@@ -1,9 +1,4 @@
-package controler;
-
-
-import model.DaoFactory;
-import model.Seance_Groupe;
-import model.Utilisateur;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,37 +7,44 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Seance_Groupe_DAO extends DAO {
-    private List<Seance_Groupe> List_Seance_Groupe;
+public class Etudiant_DAO extends DAO {
+    private List<Etudiant> List_Etudiant;
     private Connection Conn = null;
 
-    public Seance_Groupe_DAO() {
+    public Etudiant_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Seance_Groupe = new ArrayList<Seance_Groupe>();
+        List_Etudiant = new ArrayList<Etudiant>();
         this.setData();
     }
 
-    public List<Seance_Groupe> getList_Seance_Salle() {
-        return List_Seance_Groupe;
+    public List<Etudiant> getList_Etudiant() {
+        return List_Etudiant;
     }
-
-
    /* @Override
     public void find(String key_word) {
 
     }*/
+   public int find(int a){
+       int A = - 1 ;
+       for (Etudiant i: List_Etudiant) {
+           System.out.println("Id_groupe :"+a);
+           if(a ==i.getId_Utilisateur()){
+               A = i.getId_Groupe() ;
+           }
+       }
+       return A ;
+   }
 
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Seance_Groupe i: List_Seance_Groupe) {
-
-            s += String.format("\nId séance :%d \nId groupe:%d \n",i.getId_Seance(),i.getId_Groupe());
+        for (Etudiant i: List_Etudiant) {
+            s += String.format("\nId Utilisateur:%d \nNumero :%d\n Id Groupe :%d\n",i.getId_Utilisateur(),i.getNumero(),i.getId_Groupe());
         }
         return s;
     }
@@ -50,17 +52,17 @@ public class Seance_Groupe_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM seance_groupe";
+            String query = "SELECT * FROM etudiant";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                int id_seance = rs.getInt("ID_SEANCE");
+                int id_utilsateur = rs.getInt("ID_UTILISATEUR");
+                int numero = rs.getInt("NUMERO");
                 int id_groupe = rs.getInt("ID_GROUPE");
-
-                Seance_Groupe U = new Seance_Groupe(id_seance, id_groupe);
-                List_Seance_Groupe.add(U);
+                Etudiant U = new Etudiant(id_utilsateur,numero,id_groupe);
+                List_Etudiant.add(U);
             }
             st.close();
         } catch (
@@ -68,6 +70,4 @@ public class Seance_Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
-
-
 }

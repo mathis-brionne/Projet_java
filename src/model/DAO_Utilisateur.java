@@ -1,7 +1,4 @@
-package controler;
-
-import model.DaoFactory;
-import model.Utilisateur;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -32,7 +29,14 @@ public class DAO_Utilisateur extends DAO {
         return List_User;
     }
 
-
+    @Override
+    public String toString()throws NullPointerException {
+        String s =null;
+        for (Utilisateur i: List_User) {
+            s += String.format("\nNom :%s \nPrenom :%s \nEmail :%s \nPassword :%s \nId:%d \nDroit :%d\n",i.getNom(),i.getPrenom(),i.getEmail(),i.getPassword(),i.getId(),i.getDroit());
+        }
+        return s;
+    }
     public Utilisateur find(String categorie, String key_Word) throws NullPointerException {
         switch (categorie)
         {
@@ -53,26 +57,12 @@ public class DAO_Utilisateur extends DAO {
                         return i;
                     }
                 }
-
-
-
-
             default:
                 System.out.println("");
                 break;
         }
         return null;
     }
-
-    @Override
-    public String toString()throws NullPointerException {
-        String s =null;
-        for (Utilisateur i: List_User) {
-            s += String.format("\nNom :%s \nPrenom :%s \nEmail :%s \nPassword :%s \nId:%d \nDroit :%d\n",i.getNom(),i.getPrenom(),i.getEmail(),i.getPassword(),i.getId(),i.getDroit());
-        }
-        return s;
-    }
-
     @Override
     public void setData() {
         try {

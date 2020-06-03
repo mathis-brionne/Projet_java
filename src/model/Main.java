@@ -84,15 +84,7 @@ public class Main {
         System.out.println(mediumDateFormatEN.format(date));
         
    
-         int heure_debut= 16;
-         int heure_fin = 18;
-         int etat= 1;
-         int id_cours_5= 0;
-         int id_type= 2;
-         
-         Seance S_1 = new Seance ( id_seance, semaine,  heure_debut, heure_fin, etat, id_cours_5 ,id_type);   /// sans la Date
-        /// Seance S_1 = new Seance ( id_seance, semaine,date,  heure_debut, heure_fin, etat, id_cours_5 ,id_type);   Avec la Date
-         
+
          
          /// Test class Type_cours
          int id_type_cours = 3;

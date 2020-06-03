@@ -13,13 +13,6 @@ public class Salle {
     this.nom=nom;
     this.capacite=capacite;
     this.id_site=id_site;
-    
-    
-    System.out.println(id_salle);
-    System.out.println(nom);    
-    System.out.println(capacite);
-    System.out.println(id_site);
-            
   }
   public Salle(){};
 

@@ -1,7 +1,5 @@
+package model;
 
-package controler;
-import model.DaoFactory;
-import model.Groupe;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,26 +8,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Groupe_DAO extends DAO {
-    private List<Groupe> List_Group;
+public class Enseignant_DAO extends DAO {
+    private List<Enseignant> List_Enseignant;
     private Connection Conn = null;
 
-    public Groupe_DAO() {
+    public Enseignant_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Group = new ArrayList<Groupe>();
+        List_Enseignant = new ArrayList<Enseignant>();
         this.setData();
     }
 
-    public List<Groupe> getList_Group() {
-        return List_Group;
+    public List<Enseignant> getList_Enseignant() {
+        return List_Enseignant;
     }
 
-    /* @Override
+
+   /* @Override
     public void find(String key_word) {
 
     }*/
@@ -37,8 +36,9 @@ public class Groupe_DAO extends DAO {
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Groupe i: List_Group) {
-            s += String.format("\nId groupe :%d \nNom :%s \nId promotion:%d \n",i.getId_Groupe(),i.getNom(),i.getId_Promotion());
+        for (Enseignant i: List_Enseignant) {
+
+            s += String.format("\nId_Utilisateur :%d \nId_Groupe :%d \n",i.getId_Utilisateur(),i.getId_Groupe());
         }
         return s;
     }
@@ -46,17 +46,16 @@ public class Groupe_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM groupe";
+            String query = "SELECT * FROM ensignant";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String nom = rs.getString("NOM");
-                int id_promo = rs.getInt("ID_PROMOTION");
-                Groupe U = new Groupe(id, nom, id_promo);
-                List_Group.add(U);
+                int id_utilisateur = rs.getInt("ID_UTILISATEUR");
+                int id_groupe = rs.getInt("ID_SEANCE");
+                Enseignant U = new Enseignant(id_utilisateur, id_groupe);
+                List_Enseignant.add(U);
             }
             st.close();
         } catch (
@@ -64,4 +63,6 @@ public class Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+
 }

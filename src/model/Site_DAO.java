@@ -1,7 +1,4 @@
-package controler;
-import model.DaoFactory;
-
-import model.Type_Cours;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,23 +7,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Type_Cours_DAO extends DAO {
-    private List<Type_Cours> List_Type_Cours;
+public class Site_DAO extends DAO {
+    private List<Site> List_Site;
     private Connection Conn = null;
 
-    public Type_Cours_DAO() {
+    public Site_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Type_Cours = new ArrayList<Type_Cours>();
+        List_Site = new ArrayList<Site>();
         this.setData();
     }
 
-    public List<Type_Cours> getList_Type_Cours() {
-        return List_Type_Cours;
+    public List<Site> getList_Site() {
+        return List_Site;
     }
 
    /* @Override
@@ -37,8 +34,8 @@ public class Type_Cours_DAO extends DAO {
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Type_Cours i: List_Type_Cours) {
-            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Type());
+        for (Site i: List_Site) {
+            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Site());
         }
         return s;
     }
@@ -46,7 +43,7 @@ public class Type_Cours_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM type_cours";
+            String query = "SELECT * FROM site";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
@@ -54,8 +51,8 @@ public class Type_Cours_DAO extends DAO {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                Type_Cours U = new Type_Cours(id, nom);
-                List_Type_Cours.add(U);
+                Site U = new Site(id, nom);
+                List_Site.add(U);
             }
             st.close();
         } catch (

@@ -1,5 +1,8 @@
 package view;
 
+import controler.Eleve;
+import controler.GUI;
+import model.DAO_Utilisateur;
 import model.Utilisateur;
 import model.bdd_find;
 
@@ -8,11 +11,54 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login {
-    private JPanel panel1;
-    private JTextField passwordField1;
-    private JTextField textField1;
-    private JButton button1;
     public Login() {
+        JPanel panel = new JPanel();
+        JFrame frame = new JFrame();
+        frame.setSize(350, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+        panel.setLayout(null);
+
+        JLabel label = new JLabel("User");
+        label.setBounds(10 , 20, 80, 25);
+        panel.add(label);
+
+        JTextField userText = new JTextField(20);
+        userText.setBounds(100, 20, 165, 25);
+        panel.add(userText);
+
+        JLabel passwordLabel = new JLabel("Password");
+        passwordLabel.setBounds(10, 50, 80, 20);
+        panel.add(passwordLabel);
+
+        JPasswordField passwordText = new JPasswordField();
+        passwordText.setBounds(100, 50, 165, 25);
+        panel.add(passwordText);
+
+        JButton button = new JButton();
+        button.setBounds(10, 80, 80, 25);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(userText.getText());
+             DAO_Utilisateur a = new DAO_Utilisateur();
+             Utilisateur U = a.find("user",userText.getText());
+             System.out.println(U.getPassword());
+             if (passwordText.getText().equals(U.getPassword())){
+                 Eleve E = new Eleve(U);
+                 Home_Page H = new Home_Page(E);
+             }
+               frame.dispose();
+
+            }});
+        panel.add(button);
+
+
+        frame.setVisible(true);
+
+        /*
+        panel.add(label);
+
         JFrame f = new JFrame("LOGIN");
         // affectation du titre et de l'icône
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,15 +70,10 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 String username = textField1.getText();
                 String passwords = passwordField1.getText();
-               controler.Login L = new controler.Login(username , passwords);
+
             }
-        });
-    }
-    public void err_prompt(){
-
+        });*/
     }
 
-    public static void main(String[] args) {
 
-    }
 }

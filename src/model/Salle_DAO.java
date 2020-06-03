@@ -1,7 +1,4 @@
-package controler;
-import model.DaoFactory;
-
-import model.Promotion;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,34 +7,36 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Promotion_DAO extends DAO {
-    private List<Promotion> List_Promo;
+public class Salle_DAO extends DAO {
+    private List<Salle> List_Salle;
     private Connection Conn = null;
 
-    public Promotion_DAO() {
+    public Salle_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Promo = new ArrayList<Promotion>();
+        List_Salle = new ArrayList<Salle>();
         this.setData();
     }
 
-    public List<Promotion> getList_Promo() {
-        return List_Promo;
+    public List<Salle> getList_Salle() {
+        return List_Salle;
     }
 
-    /* @Override
-     public void find(String key_word) {
+   /* @Override
+    public void find(String key_word) {
 
-     }*/
+    }*/
+
+
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Promotion i: List_Promo) {
-            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Promotion());
+        for (Salle i: List_Salle) {
+            s += String.format("\nId salle:%d \nNom :%s\n Capacite :%d\n Id site :%d\n",i.getId_Salle(),i.getNom(),i.getCapacite(),i.getId_Site());
         }
         return s;
     }
@@ -45,16 +44,18 @@ public class Promotion_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM promotion";
+            String query = "SELECT * FROM salle";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                int id = rs.getInt("ID");
+                int id_salle = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                Promotion U = new Promotion(id, nom);
-                List_Promo.add(U);
+                int capacite = rs.getInt("CAPACITE");
+                int id_site = rs.getInt("ID_SITE");
+                Salle U = new Salle(id_salle,nom,capacite,id_site);
+                List_Salle.add(U);
             }
             st.close();
         } catch (

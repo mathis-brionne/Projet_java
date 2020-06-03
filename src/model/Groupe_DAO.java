@@ -1,7 +1,5 @@
-package controler;
 
-import model.DaoFactory;
-import model.Etudiant;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,25 +8,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Etudiant_DAO extends DAO {
-    private List<Etudiant> List_Etudiant;
+public class Groupe_DAO extends DAO {
+    private List<Groupe> List_Group;
     private Connection Conn = null;
 
-    public Etudiant_DAO() {
+    public Groupe_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Etudiant = new ArrayList<Etudiant>();
+        List_Group = new ArrayList<Groupe>();
         this.setData();
     }
 
-    public List<Etudiant> getList_Etudiant() {
-        return List_Etudiant;
+    public List<Groupe> getList_Group() {
+        return List_Group;
     }
-   /* @Override
+
+    /* @Override
     public void find(String key_word) {
 
     }*/
@@ -36,8 +35,8 @@ public class Etudiant_DAO extends DAO {
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Etudiant i: List_Etudiant) {
-            s += String.format("\nId Utilisateur:%d \nNumero :%d\n Id Groupe :%d\n",i.getId_Utilisateur(),i.getNumero(),i.getId_Groupe());
+        for (Groupe i: List_Group) {
+            s += String.format("\nId groupe :%d \nNom :%s \nId promotion:%d \n",i.getId_Groupe(),i.getNom(),i.getId_Promotion());
         }
         return s;
     }
@@ -45,17 +44,17 @@ public class Etudiant_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM etudiant";
+            String query = "SELECT * FROM groupe";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                int id_utilsateur = rs.getInt("ID_UTILSATEUR");
-                int numero = rs.getInt("NUMERO");
-                int id_groupe = rs.getInt("ID_GROUPE");
-                Etudiant U = new Etudiant(id_utilsateur,numero,id_groupe);
-                List_Etudiant.add(U);
+                int id = rs.getInt("ID");
+                String nom = rs.getString("NOM");
+                int id_promo = rs.getInt("ID_PROMOTION");
+                Groupe U = new Groupe(id, nom, id_promo);
+                List_Group.add(U);
             }
             st.close();
         } catch (

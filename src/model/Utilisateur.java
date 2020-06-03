@@ -11,7 +11,6 @@ public class Utilisateur {
   private String nom = "";
   private String prenom = "";
   private String password = "";
-
   public Utilisateur(int id, int droit, String email ,String nom, String prenom, String password) {
     this.id = id;
     this.droit=droit;
@@ -19,16 +18,9 @@ public class Utilisateur {
     this.nom = nom;
     this.prenom = prenom;
     this.password=password;
-    
-    System.out.println(id);
-    System.out.println(droit);
-    System.out.println(email);
-    System.out.println(nom);
-    System.out.println(prenom);
-    System.out.println(password);
   }
   public Utilisateur(){};
-     
+
   public int getId() {
     return id;
   }
@@ -56,8 +48,7 @@ public class Utilisateur {
   }
   public void setPrenom(String prenom) {
     this.prenom = prenom;
-  } 
-
+  }
   public String getPassword() {
     return password;
   }

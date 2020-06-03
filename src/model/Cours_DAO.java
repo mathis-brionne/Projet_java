@@ -1,7 +1,4 @@
-package controler;
-
-import model.DaoFactory;
-import model.Salle;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,36 +7,34 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Salle_DAO extends DAO {
-    private List<Salle> List_Salle;
+public class Cours_DAO extends DAO {
+    private List<Cours> List_Course;
     private Connection Conn = null;
 
-    public Salle_DAO() {
+    public Cours_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Salle = new ArrayList<Salle>();
+        List_Course = new ArrayList<Cours>();
         this.setData();
     }
 
-    public List<Salle> getList_Salle() {
-        return List_Salle;
+    public List<Cours> getList_Course() {
+        return List_Course;
     }
 
-   /* @Override
-    public void find(String key_word) {
+    /* @Override
+     public void find(String key_word) {
 
-    }*/
-
-
+     }*/
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Salle i: List_Salle) {
-            s += String.format("\nId salle:%d \nNom :%s\n Capacite :%d\n Id site :%d\n",i.getId_Salle(),i.getNom(),i.getCapacite(),i.getId_Site());
+        for (Cours i: List_Course) {
+            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Cours());
         }
         return s;
     }
@@ -47,18 +42,16 @@ public class Salle_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM salle";
+            String query = "SELECT * FROM cours";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                int id_salle = rs.getInt("ID");
+                int id = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                int capacite = rs.getInt("CAPACITE");
-                int id_site = rs.getInt("ID_SITE");
-                Salle U = new Salle(id_salle,nom,capacite,id_site);
-                List_Salle.add(U);
+                Cours U = new Cours(id, nom);
+                List_Course.add(U);
             }
             st.close();
         } catch (

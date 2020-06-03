@@ -1,6 +1,4 @@
-package controler;
-import model.DaoFactory;
-import model.Cours;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,34 +7,35 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cours_DAO extends DAO {
-    private List<Cours> List_Course;
+public class Type_Cours_DAO extends DAO {
+    private List<Type_Cours> List_Type_Cours;
     private Connection Conn = null;
 
-    public Cours_DAO() {
+    public Type_Cours_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Course = new ArrayList<Cours>();
+        List_Type_Cours = new ArrayList<Type_Cours>();
         this.setData();
     }
 
-    public List<Cours> getList_Course() {
-        return List_Course;
+    public List<Type_Cours> getList_Type_Cours() {
+        return List_Type_Cours;
     }
 
-    /* @Override
-     public void find(String key_word) {
+   /* @Override
+    public void find(String key_word) {
 
-     }*/
+    }*/
+
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Cours i: List_Course) {
-            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Cours());
+        for (Type_Cours i: List_Type_Cours) {
+            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Type());
         }
         return s;
     }
@@ -44,7 +43,7 @@ public class Cours_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM cours";
+            String query = "SELECT * FROM type_cours";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
@@ -52,8 +51,8 @@ public class Cours_DAO extends DAO {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                Cours U = new Cours(id, nom);
-                List_Course.add(U);
+                Type_Cours U = new Type_Cours(id, nom);
+                List_Type_Cours.add(U);
             }
             st.close();
         } catch (

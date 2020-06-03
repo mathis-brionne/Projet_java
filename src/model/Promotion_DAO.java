@@ -1,6 +1,4 @@
-package controler;
-import model.DaoFactory;
-import model.Site;
+package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,35 +7,34 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Site_DAO extends DAO {
-    private List<Site> List_Site;
+public class Promotion_DAO extends DAO {
+    private List<Promotion> List_Promo;
     private Connection Conn = null;
 
-    public Site_DAO() {
+    public Promotion_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
         }
         catch(SQLException SQLe){
             SQLe.getErrorCode();
         }
-        List_Site = new ArrayList<Site>();
+        List_Promo = new ArrayList<Promotion>();
         this.setData();
     }
 
-    public List<Site> getList_Site() {
-        return List_Site;
+    public List<Promotion> getList_Promo() {
+        return List_Promo;
     }
 
-   /* @Override
-    public void find(String key_word) {
+    /* @Override
+     public void find(String key_word) {
 
-    }*/
-
+     }*/
     @Override
     public String toString()throws NullPointerException {
         String s =null;
-        for (Site i: List_Site) {
-            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Site());
+        for (Promotion i: List_Promo) {
+            s += String.format("\nNom :%s \nId:%d \n",i.getNom(),i.getId_Promotion());
         }
         return s;
     }
@@ -45,7 +42,7 @@ public class Site_DAO extends DAO {
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM site";
+            String query = "SELECT * FROM promotion";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
@@ -53,8 +50,8 @@ public class Site_DAO extends DAO {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                Site U = new Site(id, nom);
-                List_Site.add(U);
+                Promotion U = new Promotion(id, nom);
+                List_Promo.add(U);
             }
             st.close();
         } catch (

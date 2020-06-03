@@ -8,20 +8,21 @@ package model;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
-import java.util.Calendar;  
+import java.util.Calendar;
+import java.util.List;
 
 public class Seance {
   private int id_seance = 0;
   private int semaine = 0;
   //chekcer si ça fonctionne bien
   private Date date;
-  private int heure_debut = 0;
-  private int heure_fin = 0;
+  private String heure_debut = "";
+  private String heure_fin = "";
   private int etat = 0;
   private int id_cours = 0;
   private int id_type = 0;
 
-  public Seance(int id_seance, int semaine ,int heure_debut, int heure_fin, int etat, int id_cours , int id_type ) {
+  public Seance(int id_seance, int semaine ,String heure_debut, String heure_fin, int etat, int id_cours , int id_type ) {
     this.id_seance = id_seance;
     this.semaine=semaine;
     ///this.date=date;
@@ -30,15 +31,6 @@ public class Seance {
     this.etat=etat;
     this.id_cours=id_cours;
     this.id_type=id_type;
-    
-    System.out.println(id_seance);
-    System.out.println(semaine);
-    System.out.println(date);
-    System.out.println(heure_debut);
-    System.out.println(heure_fin);
-    System.out.println(etat);
-    System.out.println(id_cours);
-    System.out.println(id_type);
   }
   public Seance(){};
      
@@ -65,16 +57,16 @@ public class Seance {
     this.date = date;
   }  
 
-  public int getHeure_Debut() {
+  public String getHeure_Debut() {
     return heure_debut;
   }
-  public void setHeure_Debut(int heure_debut) {
+  public void setHeure_Debut(String heure_debut) {
     this.heure_debut = heure_debut;
   }  
-  public int getHeure_Fin() {
+  public String getHeure_Fin() {
     return heure_fin;
   }
-  public void setHeure_Fin(int heure_fin) {
+  public void setHeure_Fin(String heure_fin) {
     this.heure_fin = heure_fin;
   } 
 
@@ -83,6 +75,12 @@ public class Seance {
   }
   public void setEtat(int etat) {
     this.etat = etat;
-  } 
+  }
+
+  @Override
+  public String toString() {
+    return super.toString();
+  }
 }
+
 
