@@ -20,12 +20,15 @@ class Ajouter_Seance extends JFrame implements ActionListener {
     private JComboBox month;
     private JComboBox year;
     private JButton sub;
+    private JLabel semaine;
+    private JComboBox sem;
 
     private JLabel res;
 
 
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
     String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
+    String[] semaines = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12","13","14","15","16"};
 
     private String dates[]
             = { "1", "2", "3", "4", "5",
@@ -121,11 +124,23 @@ class Ajouter_Seance extends JFrame implements ActionListener {
         gp.setLocation(200, 250);
         c.add(gp);
 
+        semaine = new JLabel("Semaine");
+        semaine.setFont(new Font("Arial", Font.PLAIN, 20));
+        semaine.setSize(100, 20);
+        semaine.setLocation(100, 300);
+        c.add(semaine);
+
+        sem = new JComboBox(semaines);
+        sem.setFont(new Font("Arial", Font.PLAIN, 15));
+        sem.setSize(50, 20);
+        sem.setLocation(200, 300);
+        c.add(sem);
+
 
         sub = new JButton("Submit");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
-        sub.setLocation(150, 300);
+        sub.setLocation(150, 350);
         sub.addActionListener(this);
         c.add(sub);
 
@@ -160,6 +175,12 @@ class Ajouter_Seance extends JFrame implements ActionListener {
             String testgroupe= (String)gp.getSelectedItem();
             Integer y = Integer.valueOf(testgroupe);
             System.out.println(y);
+            //SETTER DE GROUPE
+
+            String testsem= (String)sem.getSelectedItem();
+            Integer z = Integer.valueOf(testsem);
+            System.out.println(z);
+            //SETTER DE semaine
 
 
             res.setText("Registration Successfully..");
