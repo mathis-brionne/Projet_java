@@ -74,9 +74,7 @@ class Ajouter_Seance extends JFrame implements ActionListener {
         tname.setLocation(200, 100);
         c.add(tname);
 
-
-
-        dob = new JLabel("DOB");
+        dob = new JLabel("Date");
         dob.setFont(new Font("Arial", Font.PLAIN, 20));
         dob.setSize(100, 20);
         dob.setLocation(100, 150);
@@ -84,20 +82,20 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
         date = new JComboBox(dates);
         date.setFont(new Font("Arial", Font.PLAIN, 15));
-        date.setSize(50, 20);
+        date.setSize(100, 20);
         date.setLocation(200, 150);
         c.add(date);
 
         month = new JComboBox(months);
         month.setFont(new Font("Arial", Font.PLAIN, 15));
-        month.setSize(60, 20);
-        month.setLocation(250, 150);
+        month.setSize(100, 20);
+        month.setLocation(300, 150);
         c.add(month);
 
         year = new JComboBox(years);
         year.setFont(new Font("Arial", Font.PLAIN, 15));
-        year.setSize(60, 20);
-        year.setLocation(320, 150);
+        year.setSize(100, 20);
+        year.setLocation(400, 150);
         c.add(year);
 
         promotion = new JLabel("Promotion");
@@ -108,7 +106,7 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
         promo = new JComboBox(promos);
         promo.setFont(new Font("Arial", Font.PLAIN, 15));
-        promo.setSize(50, 20);
+        promo.setSize(100, 20);
         promo.setLocation(200, 200);
         c.add(promo);
 
@@ -120,7 +118,7 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
         gp = new JComboBox(groupes);
         gp.setFont(new Font("Arial", Font.PLAIN, 15));
-        gp.setSize(50, 20);
+        gp.setSize(100, 20);
         gp.setLocation(200, 250);
         c.add(gp);
 
@@ -132,7 +130,7 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
         sem = new JComboBox(semaines);
         sem.setFont(new Font("Arial", Font.PLAIN, 15));
-        sem.setSize(50, 20);
+        sem.setSize(100, 20);
         sem.setLocation(200, 300);
         c.add(sem);
 
