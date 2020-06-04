@@ -1,6 +1,7 @@
 package view;
 
 import controler.Eleve;
+import model.Cours_DAO;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,12 +12,12 @@ public class Home_Page {
         System.out.println(E.getPlannig().toString());
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
-        frame.setSize(350, 200);
+        frame.setSize(2000, 1800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        JLabel label = new JLabel("User");
+        JLabel label = new JLabel("Bonjous "+E.getPrenom()+" votre prochain cours est "+ new Cours_DAO().find(1));
         label.setBounds(10 , 20, 80, 25);
         panel.add(label);
 

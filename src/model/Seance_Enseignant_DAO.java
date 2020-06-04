@@ -32,7 +32,15 @@ public class Seance_Enseignant_DAO extends DAO {
     public void find(String key_word) {
 
     }*/
-
+    public ArrayList<Integer> finds(int Id_users){
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for (Seance_Enseignant a :List_Seance_Enseignant) {
+            if (a.getId_Enseignant() == Id_users){
+                result.add(a.getId_Seance());
+            }
+        }
+        return result ;
+    }
     @Override
     public String toString()throws NullPointerException {
         String s =null;

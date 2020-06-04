@@ -27,7 +27,14 @@ public class Enseignant_DAO extends DAO {
         return List_Enseignant;
     }
 
-
+    public ArrayList<Integer> finds(int ID_users){
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for (Enseignant E: List_Enseignant) {
+            if (ID_users == E.getId_Utilisateur()){
+                result.add(E.getId_cours());
+            }
+        }
+    }
    /* @Override
     public void find(String key_word) {
 
@@ -38,7 +45,7 @@ public class Enseignant_DAO extends DAO {
         String s =null;
         for (Enseignant i: List_Enseignant) {
 
-            s += String.format("\nId_Utilisateur :%d \nId_Groupe :%d \n",i.getId_Utilisateur(),i.getId_Groupe());
+            s += String.format("\nId_Utilisateur :%d \nId_Groupe :%d \n",i.getId_Utilisateur(),i.getId_cours());
         }
         return s;
     }
@@ -53,7 +60,7 @@ public class Enseignant_DAO extends DAO {
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 int id_utilisateur = rs.getInt("ID_UTILISATEUR");
-                int id_groupe = rs.getInt("ID_SEANCE");
+                int id_groupe = rs.getInt("ID_Cours");
                 Enseignant U = new Enseignant(id_utilisateur, id_groupe);
                 List_Enseignant.add(U);
             }

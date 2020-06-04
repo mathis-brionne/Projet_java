@@ -1,5 +1,6 @@
 package model;
 
+import java.rmi.NoSuchObjectException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,14 @@ public class Cours_DAO extends DAO {
     public List<Cours> getList_Course() {
         return List_Course;
     }
-
+    public String find(int Id_cours){
+        for(Cours c : List_Course){
+            if(c.getId_Cours() == Id_cours){
+                return  c.getNom();
+            }
+        }
+        return "" ;
+    }
     /* @Override
      public void find(String key_word) {
 

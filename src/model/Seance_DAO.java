@@ -51,11 +51,12 @@ public class Seance_DAO extends DAO{
     @Override
     public void setData() {
         try {
-            String query = "SELECT * FROM seance";
+            String query = "SELECT * FROM seance ";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
             ResultSet rs = st.executeQuery(query);
+
             while (rs.next()) {
                 int id_seance = rs.getInt("ID");
                 int semaine = rs.getInt("SEMAINE");
