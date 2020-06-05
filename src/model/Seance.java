@@ -79,6 +79,8 @@ public class Seance extends Object {
   public String getHeure_Fin() {
     return heure_fin;
   }
+  public String getHeure_Debut() {
+    return heure_debut; }
 
   public int getEtat() {
     return etat;

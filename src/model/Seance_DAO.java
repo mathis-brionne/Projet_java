@@ -103,4 +103,38 @@ public class Seance_DAO extends DAO{
         }
     }
 
+    public void delete(Seance seance) {
+        try {
+            String query = "DELETE FROM seance WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ s.getId_Seance());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Seance update(Seance user) {
+        try {
+            String query =     "UPDATE utilisateur SET SEMAINE = '" + user.getSemaine() + "',"+
+                    " DATE = '" + user.getDate() + "',"+
+                    " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
+                    " HEURE_FIN = '" + user.getHeure_Fin() + "',"+
+                    " ETAT = '" + user.getEtat() + "'"+
+                    " WHERE ID = " + user.getId_Seance();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+}
+
 }
