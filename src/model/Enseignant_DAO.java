@@ -34,6 +34,7 @@ public class Enseignant_DAO extends DAO {
                 result.add(E.getId_cours());
             }
         }
+        return result;
     }
    /* @Override
     public void find(String key_word) {

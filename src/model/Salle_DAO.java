@@ -30,7 +30,14 @@ public class Salle_DAO extends DAO {
     public void find(String key_word) {
 
     }*/
-
+   public String finds(int Id_salle){
+       for (Salle s : List_Salle){
+           if (s.getId_Salle() == Id_salle){
+               return s.getNom();
+           }
+       }
+       return "";
+   }
 
     @Override
     public String toString()throws NullPointerException {

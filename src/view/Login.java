@@ -2,6 +2,7 @@ package view;
 
 import controler.Eleve;
 import controler.GUI;
+import controler.Prof;
 import model.DAO_Utilisateur;
 import model.Utilisateur;
 import model.bdd_find;
@@ -44,9 +45,21 @@ public class Login {
              DAO_Utilisateur a = new DAO_Utilisateur();
              Utilisateur U = a.find("user",userText.getText());
              System.out.println(U.getPassword());
+                planning p ;
              if (passwordText.getText().equals(U.getPassword())){
-                 Eleve E = new Eleve(U);
-                 Home_Page H = new Home_Page(E);
+                switch (U.getDroit()){
+                    case 1 : break;
+                    case 2 : break;
+                    case 3 :
+                        Prof P = new Prof(U);
+                         p = new  planning(P.getPlannig().getSeances());
+                        break;
+                    case 4 :
+                        Eleve E = new Eleve(U);
+                         p = new planning(E.getPlannig().getSeances());
+                        break;
+                }
+
              }
                frame.dispose();
 

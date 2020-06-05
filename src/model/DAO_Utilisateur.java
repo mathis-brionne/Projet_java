@@ -57,11 +57,21 @@ public class DAO_Utilisateur extends DAO {
                         return i;
                     }
                 }
+                break;
             default:
                 System.out.println("");
                 break;
         }
         return null;
+    }
+    public String getname(int Id_users){
+        for (Utilisateur u: List_User) {
+
+            if (u.getId()==Id_users){
+                return u.getNom();
+            }
+        }
+        return "";
     }
     @Override
     public void setData() {

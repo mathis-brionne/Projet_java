@@ -10,31 +10,27 @@ import java.util.List;
 public class Planning {
     public  Planning(){}
 
-    private ArrayList<ArrayList<Seance>> Seances = new ArrayList<ArrayList<Seance>>() ;
-    public  Planning(ArrayList<Integer> Id_seance){
+    private Seance[][][] Seances = new Seance[52][5][7];
+    public  Planning(ArrayList<Integer> Id_seance) {
         System.out.println(Id_seance.size());
-        Seance_DAO seance_dao =new Seance_DAO();
-        for (int i = 0 ; i < 52 ; i ++ ){
-            Seances.add(new ArrayList<Seance>());
-            for (int y= 0 ; y < Id_seance.size(); y++){
-                Seances.get(i).add(seance_dao.finds(i , Id_seance.get(y)));
+        Seance_DAO seance_dao = new Seance_DAO();
+        for (int i = 0; i < 52; i++) {
+            for (int j = 0; j < 5; j++) {
+                for (int y = 0; y < 7; y++) {
+                    for (int z = 0; z<Id_seance.size(); z++)
+                    {
+                        Seances[i][j][y] = seance_dao.finds(i, j ,y, Id_seance.get(z));
+                        if (Seances[i][j][y].getId_Seance()!=0){
+                            break;
+                        }
+                    }
+
+                }
             }
         }
     }
-
-    public ArrayList<ArrayList<Seance>> getSeances() {
+    public Seance[][][] getSeances() {
         return Seances;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder a = new StringBuilder("");
-        for (int i=0 ; i< 52 ; i++){
-            a.append("\n");
-            for (int y= 0 ; y < Seances.get(i).size() ; y++){
-                a.append(Seances.get(i).get(y).getId_Seance());
-            }
-        }
-        return a.toString();
-    }
 }

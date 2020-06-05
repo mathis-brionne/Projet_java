@@ -32,7 +32,14 @@ public class Seance_Salle_DAO extends DAO {
     public void find(String key_word) {
 
     }*/
-
+    public int find(int id_seance){
+        for (Seance_Salle s: List_Seance_Salle) {
+            if (s.getId_Seance() == id_seance){
+                return s.getId_Salle();
+            }
+        }
+        return 0;
+    }
     @Override
     public String toString()throws NullPointerException {
         String s =null;

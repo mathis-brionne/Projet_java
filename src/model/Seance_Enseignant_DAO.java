@@ -41,6 +41,15 @@ public class Seance_Enseignant_DAO extends DAO {
         }
         return result ;
     }
+    public int find(int Id_Seance){
+        for (Seance_Enseignant a :List_Seance_Enseignant) {
+            if (a.getId_Enseignant() == Id_Seance){
+                return a.getId_Enseignant();
+            }
+        }
+        return 0 ;
+    }
+
     @Override
     public String toString()throws NullPointerException {
         String s =null;
