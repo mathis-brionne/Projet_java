@@ -67,4 +67,35 @@ public class Cours_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    public void delete(Cours c) {
+        try {
+            String query = "DELETE FROM utilisateur WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ c.getId_Cours());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Cours update(Cours c) {
+        try {
+            System.out.println(c.getNom());
+
+            String query =     "UPDATE cours SET NOM = '" + c.getNom() + "'"+
+                    " WHERE ID = " + c.getId_Cours();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
+}
 }
