@@ -39,7 +39,7 @@ public class Login {
         JButton button = new JButton();
         button.setBounds(10, 80, 80, 25);
         button.addActionListener(new ActionListener() {
-            @Override
+                @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(userText.getText());
              DAO_Utilisateur a = new DAO_Utilisateur();
@@ -52,11 +52,11 @@ public class Login {
                     case 2 : break;
                     case 3 :
                         Prof P = new Prof(U);
-                         p = new  planning(P.getPlannig().getSeances());
+                         p = new  planning(P.getPlannig().getSeances(),21);
                         break;
                     case 4 :
                         Eleve E = new Eleve(U);
-                         p = new planning(E.getPlannig().getSeances());
+                         p = new planning(E.getPlannig().getSeances(),21);
                         break;
                 }
 

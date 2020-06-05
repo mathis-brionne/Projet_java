@@ -28,7 +28,7 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
     String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
-    String[] semaines = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12","13","14","15","16"};
+    String[] semaines = new String[52];
 
     private String dates[]
             = { "1", "2", "3", "4", "5",
@@ -48,6 +48,10 @@ class Ajouter_Seance extends JFrame implements ActionListener {
 
     public Ajouter_Seance()
     {
+        for(int i =0 ; i<52;i++)
+        {
+            semaines[i]= String.valueOf(i+1);
+        }
         setTitle("Ajouter une nouvelle séance");
         setBounds(300, 90, 900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -1,11 +1,13 @@
 package view;
 
 
+import javafx.event.ActionEvent;
 import model.Cours_DAO;
 import model.Seance;
 import sun.awt.SunHints;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
@@ -18,16 +20,42 @@ public class planning extends JFrame {
     //JToggleButton btngreen;
     //JButton valid = new JButton("Confirmer");
     ModeleStatique model ;
-    int Semaine = 21;
+    int Semaine;
     JTable table;
+
     boolean test;
 
-    public planning(Seance[][][] seances) {
-
+    public planning(Seance[][][] seances, int Semaineset) {
+        this.Semaine = Semaineset;
+        String[] semaine = new String[52];
+        for(int i =0 ; i<52;i++)
+        {
+            semaine[i]= String.valueOf(i+1);
+        }
+        JComboBox sem = new JComboBox(semaine);
+        sem.setFont(new Font("Arial", Font.PLAIN, 15));
+        sem.setSize(100, 20);
+        sem.setLocation(200, 300);
+        JButton sub = new JButton("Submit");
+        sub.setFont(new Font("Arial", Font.PLAIN, 15));
+        sub.setSize(100, 20);
+        sub.setLocation(150, 350);
+        sub.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                if (e.getSource() == sub) {
+                    String testsem= (String)sem.getSelectedItem();
+                    Semaine = (int) Integer.valueOf(testsem);
+                    System.out.println(Semaine);
+                    dispose();
+                    planning p = new planning(seances , Semaine );
+                }
+            }
+        });
+        JPanel frame2 = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panelHaut = new JPanel();
         JPanel frame = new JPanel();
-        JTextArea text = new JTextArea("Coucou les loulou");
         setSize(1000, 800);
         model = new ModeleStatique(seances, Semaine);
 
@@ -40,13 +68,20 @@ public class planning extends JFrame {
 
         table.setDefaultRenderer(String.class, new ColorCellRenderer());
 
+        JLabel name = new JLabel("Semaine");
+        name.setFont(new Font("Arial", Font.PLAIN, 20));
+        name.setSize(100, 20);
+        name.setLocation(100, 100);
+        frame2.add(name);
 
 
-        add(panelHaut);
+        frame2.add(sub);
+        frame2.add(sem);
+        frame.add(frame2, BorderLayout.NORTH);
         frame.add(new JScrollPane(table), BorderLayout.CENTER);
-        frame.add(panelHaut, BorderLayout.NORTH);
         add(frame);
-        frame.add(text);
+
+        frame2.setVisible(true);
         frame.setVisible(true);
         setVisible(true);
 
