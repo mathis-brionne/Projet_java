@@ -118,8 +118,8 @@ public class DAO_Utilisateur extends DAO {
             String query =     "UPDATE utilisateur SET EMAIL = '" + user.getEmail() + "',"+
                     " PASSWD = '" + user.getPassword() + "',"+
                     " NOM = '" + user.getNom() + "',"+
-                    " PRENOM = '" + user.getPrenom() + "',"+
-                    " DROIT = '" + user.getDroit() + "',"+
+                    " PREMON = '" + user.getPrenom() + "',"+
+                    " DROIT = '" + user.getDroit() + "'"+
                     " WHERE ID = " + user.getId();
             System.out.println(query);
             Statement st = Conn.createStatement();
