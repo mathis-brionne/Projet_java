@@ -62,4 +62,20 @@ public class Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    public void delete(Groupe user) {
+        try {
+            String query = "DELETE FROM groupe WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ user.getId_Groupe());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
 }

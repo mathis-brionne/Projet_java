@@ -70,4 +70,42 @@ public class Etudiant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    public void delete(Etudiant user) {
+        try {
+            String query = "DELETE FROM etudiant WHERE ID = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ user.getId_Utilisateur());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    /*
+//IMPOSSIBLE DE UPDATE
+    public Utilisateur update(Utilisateur user) {
+        try {
+            System.out.println(user.getNom());
+            System.out.println(user.getEmail());
+            String query =     "UPDATE etudiant SET NUMERO = '" + user.getEmail() + "',"+
+                    " PASSWD = '" + user.getPassword() + "',"+
+                    " NOM = '" + user.getNom() + "',"+
+                    " PREMON = '" + user.getPrenom() + "',"+
+                    " DROIT = '" + user.getDroit() + "'"+
+                    " WHERE ID = " + user.getId();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+}
+
+     */
 }
