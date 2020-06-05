@@ -100,7 +100,7 @@ public class DAO_Utilisateur extends DAO {
 
     public void delete(Utilisateur user) {
         try {
-            String query = "DELETE FROM langage WHERE lan_id = ";
+            String query = "DELETE FROM utilisateur WHERE id = ";
             System.out.println(query);
             Statement st = Conn.createStatement();
 
@@ -113,12 +113,14 @@ public class DAO_Utilisateur extends DAO {
 
     public Utilisateur update(Utilisateur user) {
         try {
-            String query =     "UPDATE utilisateur SET droit = '" + user.getDroit() + "',"+
-                    " email = '" + user.getEmail() + "',"+
-                    " nom = '" + user.getNom() + "',"+
-                    " prenom = '" + user.getPrenom() + "',"+
-                    " password = '" + user.getPassword() + "',"+
-                    " WHERE id = " + user.getId();
+            System.out.println(user.getNom());
+            System.out.println(user.getEmail());
+            String query =     "UPDATE utilisateur SET EMAIL = '" + user.getEmail() + "',"+
+                    " PASSWD = '" + user.getPassword() + "',"+
+                    " NOM = '" + user.getNom() + "',"+
+                    " PRENOM = '" + user.getPrenom() + "',"+
+                    " DROIT = '" + user.getDroit() + "',"+
+                    " WHERE ID = " + user.getId();
             System.out.println(query);
             Statement st = Conn.createStatement();
 

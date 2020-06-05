@@ -16,9 +16,42 @@ import java.util.Calendar;
 public class Main {
       
      public static void main(String[] args) {
-         
+
+         /// afficher les users
+         DAO_Utilisateur Users = new DAO_Utilisateur();
+         try{
+             System.out.println(Users.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
+         /// suprimer un user envoyé en parametre
+         Utilisateur U = Users.find("user","test@gmails.com");
+         System.out.println(U.getNom());
+         String R = "Mathilde";
+         U.setNom(R);
+         System.out.println(U.getId());
+         U = Users.update(U);
+
+
+         /// afficher les users et regarder si le user choisi a bien été sup ou update
+         DAO_Utilisateur Users2 = new DAO_Utilisateur();
+         try{
+             System.out.println(Users.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
+
+
+
+
          /// Test class utilisateur  
-         int id = 4;
+         /*int id = 4;
          int droit= 0;
          String email="johan.croc@gmail.com";
          String nom="Croc";
@@ -101,7 +134,10 @@ public class Main {
          String nom_salle = "P305"; 
          int capacite = 36; 
          int id_site_salle = 4;
-         Salle Salle1 = new Salle (id_salle1, nom_salle, capacite, id_site_salle);  
+         Salle Salle1 = new Salle (id_salle1, nom_salle, capacite, id_site_salle);
+
+          */
+
          
     }
     public void display(String a , String b){
