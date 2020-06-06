@@ -18,6 +18,9 @@ public class Cours {
   public int getId_Cours() {
     return id_cours;
   }
+  public void setId(int id) {
+    this.id_cours = id;
+  }
 
   public String getNom() {
     return nom;

@@ -107,4 +107,26 @@ public class Cours_DAO extends DAO {
         return c;
     }
 
+    public Cours create(Cours c) {
+        try {
+            System.out.println(c.getNom());
+            String query = "INSERT INTO cours (NOM) VALUES('"+c.getNom()+"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
+
+    public void ajout(Cours c)
+    {
+        List_Course.add(c);
+    }
+
 }
