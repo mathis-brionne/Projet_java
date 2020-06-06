@@ -142,7 +142,7 @@ public class Main {
          /// update une séance
          Seance C = sea.find(1);
          System.out.println(C.getSemaine());
-         Integer R = 13;
+         Integer R = 15;
          C.setSemaine(R);
          System.out.println(C.getSemaine());
          C = sea.update(C);
@@ -152,7 +152,7 @@ public class Main {
 
          Seance_DAO sea2 = new Seance_DAO();
          try{
-             System.out.println(sea.toString());
+             System.out.println(sea2.toString());
          }catch (NullPointerException n)
          {
              System.out.println(n.getCause());
