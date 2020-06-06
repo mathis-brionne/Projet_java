@@ -51,6 +51,15 @@ public class Seance_DAO extends DAO{
         return s;
     }
 
+    public Seance find(int id){
+        for(Seance c : List_Seance){
+            if(c.getId_Seance() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public void setData() {

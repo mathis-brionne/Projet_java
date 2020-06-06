@@ -39,6 +39,15 @@ public class Promotion_DAO extends DAO {
         return s;
     }
 
+    public Promotion find(int id){
+        for(Promotion c : List_Promo){
+            if(c.getId_Promotion() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void setData() {
         try {
