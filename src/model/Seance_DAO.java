@@ -109,7 +109,7 @@ public class Seance_DAO extends DAO{
             System.out.println(query);
             Statement st = Conn.createStatement();
 
-            ResultSet rs = st.executeQuery(query+ s.getId_Seance());
+            ResultSet rs = st.executeQuery(query+ seance.getId_Seance());
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -137,4 +137,4 @@ public class Seance_DAO extends DAO{
 
 }
 
-}
+
