@@ -65,6 +65,7 @@ public class Main {
 
 
          /// afficher les cours
+         /*
 
          Cours_DAO cou = new Cours_DAO();
          try{
@@ -75,17 +76,18 @@ public class Main {
              System.out.println("Aucune donnée stocko en mémoire");
          }
 
+          */
+
 
 
          /// créer un cours
+         /*
 
          Cours courscreate= new Cours(0, "Chinois");
          cou.ajout(courscreate);
          cou.create(courscreate);
 
-
-        /// cou.getList_Course().add(courscreate);
-
+          */
 
 
          /// suprimer un cours envoyé en parametre
@@ -111,6 +113,7 @@ public class Main {
 
 
          /// afficher les cours
+         /*
 
          Cours_DAO cou2 = new Cours_DAO();
          try{
@@ -120,6 +123,23 @@ public class Main {
              System.out.println(n.getCause());
              System.out.println("Aucune donnée stocko en mémoire");
          }
+
+          */
+
+
+         /// afficher les séances
+
+
+         Seance_DAO sea = new Seance_DAO();
+         try{
+             System.out.println(sea.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
+
 
 
 
