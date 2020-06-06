@@ -149,6 +149,11 @@ public class DAO_Utilisateur extends DAO {
         return user;
     }
 
+    public Utilisateur ajout(Utilisateur nouv)
+    {
+        List_User.add(nouv);
+    }
+
 
 
 ’
