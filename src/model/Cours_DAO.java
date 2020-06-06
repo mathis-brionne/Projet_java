@@ -26,6 +26,7 @@ public class Cours_DAO extends DAO {
     public List<Cours> getList_Course() {
         return List_Course;
     }
+
     public String find(int Id_cours){
         for(Cours c : List_Course){
             if(c.getId_Cours() == Id_cours){
@@ -78,7 +79,7 @@ public class Cours_DAO extends DAO {
     }
     public void delete(Cours c) {
         try {
-            String query = "DELETE FROM utilisateur WHERE id = ";
+            String query = "DELETE FROM cours WHERE id = ";
             System.out.println(query);
             Statement st = Conn.createStatement();
 

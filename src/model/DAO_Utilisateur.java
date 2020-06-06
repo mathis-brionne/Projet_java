@@ -136,8 +136,8 @@ public class DAO_Utilisateur extends DAO {
         try {
             System.out.println(user.getNom());
             System.out.println(user.getEmail());
-            String query = "INSERT INTO utilisateur (EMAIL, PASSWD, NOM, PRENOM, DROIT ) " +
-                    "VALUES ( '" + user.getPassword() + "',"+ user.getNom() + "',"+ user.getPrenom() + "',"+ user.getDroit() + "')";
+            String query = "INSERT INTO utilisateur (EMAIL, PASSWD, NOM, PREMON, DROIT) VALUES('"+user.getEmail()+"', '"+user.getPassword()+"', '"+user.getNom()+"', '"+user.getPrenom()+"', '"+user.getDroit()+"')";
+
             System.out.println(query);
             Statement st = Conn.createStatement();
 
@@ -149,12 +149,11 @@ public class DAO_Utilisateur extends DAO {
         return user;
     }
 
-    public Utilisateur ajout(Utilisateur nouv)
+
+
+    public void ajout(Utilisateur nouv)
     {
         List_User.add(nouv);
     }
 
-
-
-’
 }
