@@ -32,6 +32,15 @@ public class Groupe_DAO extends DAO {
 
     }*/
 
+    public Groupe find(int id){
+        for(Groupe c : List_Group){
+            if(c.getId_Groupe() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString()throws NullPointerException {
         String s =null;

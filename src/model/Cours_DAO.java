@@ -34,6 +34,15 @@ public class Cours_DAO extends DAO {
         }
         return "" ;
     }
+
+    public Cours find2(int id_cours){
+        for(Cours c : List_Course){
+            if(c.getId_Cours() == id_cours){
+                return  c;
+            }
+        }
+        return null;
+    }
     /* @Override
      public void find(String key_word) {
 
