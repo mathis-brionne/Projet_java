@@ -47,6 +47,7 @@ public class Seance_DAO extends DAO{
         String s =null;
         for (Seance i: List_Seance) {
             s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///   pb ave la date         s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%date \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getDate(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
         }
         return s;
     }
