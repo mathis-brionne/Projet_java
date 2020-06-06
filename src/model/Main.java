@@ -142,7 +142,7 @@ public class Main {
          /// update une séance
          Seance C = sea.find(1);
          System.out.println(C.getSemaine());
-         Integer R = 15;
+         Integer R = 12;
          C.setSemaine(R);
          System.out.println(C.getSemaine());
          C = sea.update(C);

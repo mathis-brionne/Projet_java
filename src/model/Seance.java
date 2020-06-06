@@ -100,10 +100,14 @@ public class Seance extends Object {
   public String getHeure_Fin() {
     return heure_fin;
   }
-/// mettre le setteur pour heure debut et heure fin
-
-  public String getHeure_Debut() { return heure_debut; }
-
+  public void setHeure_fin(String h) {
+    this.heure_fin = h;
+  }
+  public String getHeure_Debut() {
+    return heure_debut; }
+  public void setHeure_debut(String h) {
+    this.heure_debut = h;
+  }
   public int getEtat() {
     return etat;
   }

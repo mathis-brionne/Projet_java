@@ -46,8 +46,15 @@ public class Seance_DAO extends DAO{
     public String toString()throws NullPointerException {
         String s =null;
         for (Seance i: List_Seance) {
-            s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
-            ///   pb ave la date         s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%date \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getDate(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///   pb ave la date
+            Date indate;
+            indate = i.getDate();
+            String dateString = null;
+            SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
+            dateString = sdfr.format(indate);
+
+            s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%s \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),dateString,i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
         }
         return s;
     }
