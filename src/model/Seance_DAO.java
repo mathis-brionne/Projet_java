@@ -46,9 +46,19 @@ public class Seance_DAO extends DAO{
     public String toString()throws NullPointerException {
         String s =null;
         for (Seance i: List_Seance) {
-            s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%d \nheure_fin :%d \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///   pb ave la date         s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%date \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getDate(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
         }
         return s;
+    }
+
+    public Seance find(int id){
+        for(Seance c : List_Seance){
+            if(c.getId_Seance() == id){
+                return  c;
+            }
+        }
+        return null;
     }
 
 
@@ -103,4 +113,38 @@ public class Seance_DAO extends DAO{
         }
     }
 
+    public void delete(Seance seance) {
+        try {
+            String query = "DELETE FROM seance WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ seance.getId_Seance());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Seance update(Seance user) {
+        try {
+            String query =     "UPDATE utilisateur SET SEMAINE = '" + user.getSemaine() + "',"+
+                    " DATE = '" + user.getDate() + "',"+
+                    " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
+                    " HEURE_FIN = '" + user.getHeure_Fin() + "',"+
+                    " ETAT = '" + user.getEtat() + "'"+
+                    " WHERE ID = " + user.getId_Seance();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
 }
+
+

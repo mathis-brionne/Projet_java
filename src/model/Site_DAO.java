@@ -60,4 +60,17 @@ public class Site_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    //PAS BESOIN
+    public void delete(Site s) {
+        try {
+            String query = "DELETE FROM site WHERE ID = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ s.getId_Site());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

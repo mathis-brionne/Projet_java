@@ -17,7 +17,9 @@ public class Main {
       
      public static void main(String[] args) {
 
+
          /// afficher les users
+         /*
          DAO_Utilisateur Users = new DAO_Utilisateur();
          try{
              System.out.println(Users.toString());
@@ -26,20 +28,111 @@ public class Main {
              System.out.println(n.getCause());
              System.out.println("Aucune donnée stocko en mémoire");
          }
+          */
 
-         /// suprimer un user envoyé en parametre
+
+         /// créer un user
+          /*
+         Utilisateur testcreate = new Utilisateur(0,0,"testcreate@c.com","Math","math","1234");
+         Users.ajout(testcreate);
+         System.out.println(testcreate.getId()+" "+testcreate.getEmail());
+         Users.create(testcreate);
+          */
+
+
+         /// update un user envoyé en parametre
+          /*
          Utilisateur U = Users.find("user","test@gmails.com");
          System.out.println(U.getNom());
          String R = "Mathilde";
          U.setNom(R);
          System.out.println(U.getId());
          U = Users.update(U);
-
+         */
 
          /// afficher les users et regarder si le user choisi a bien été sup ou update
+         /*
          DAO_Utilisateur Users2 = new DAO_Utilisateur();
          try{
-             System.out.println(Users.toString());
+             System.out.println(Users2.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+          */
+
+
+
+         /// afficher les cours
+         /*
+
+         Cours_DAO cou = new Cours_DAO();
+         try{
+             System.out.println(cou.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
+          */
+
+
+
+         /// créer un cours
+         /*
+
+         Cours courscreate= new Cours(0, "Chinois");
+         cou.ajout(courscreate);
+         cou.create(courscreate);
+
+          */
+
+
+         /// suprimer un cours envoyé en parametre
+         /*
+         /*int x= 2;
+         ///Cours C = list <Cours>(2);
+         ///Cours C = List<Cours>(2);
+         Cours C = cou.find2(x);
+
+         System.out.println(C.getId_Cours());
+         cou.delete(C);
+         */
+
+         /// update un cours envoyé en parametre
+         /*
+         Cours C = cou.find2(3);
+         System.out.println(C.getNom());
+         String R = "Anglais";
+         C.setNom(R);
+         System.out.println(C.getId_Cours());
+         C = cou.update(C);
+          */
+
+
+         /// afficher les cours
+         /*
+
+         Cours_DAO cou2 = new Cours_DAO();
+         try{
+             System.out.println(cou2.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
+          */
+
+
+         /// afficher les séances
+
+
+         Seance_DAO sea = new Seance_DAO();
+         try{
+             System.out.println(sea.toString());
          }catch (NullPointerException n)
          {
              System.out.println(n.getCause());
@@ -50,7 +143,9 @@ public class Main {
 
 
 
-         /// Test class utilisateur  
+
+
+         /// Test class utilisateur   ----------------------------------------------------------------------------
          /*int id = 4;
          int droit= 0;
          String email="johan.croc@gmail.com";

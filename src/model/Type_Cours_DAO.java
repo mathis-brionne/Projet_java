@@ -60,4 +60,17 @@ public class Type_Cours_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void delete(Type_Cours type) {
+        try {
+            String query = "DELETE FROM type_cours WHERE ID = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ type.getId_Type());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

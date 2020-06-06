@@ -118,8 +118,8 @@ public class DAO_Utilisateur extends DAO {
             String query =     "UPDATE utilisateur SET EMAIL = '" + user.getEmail() + "',"+
                     " PASSWD = '" + user.getPassword() + "',"+
                     " NOM = '" + user.getNom() + "',"+
-                    " PRENOM = '" + user.getPrenom() + "',"+
-                    " DROIT = '" + user.getDroit() + "',"+
+                    " PREMON = '" + user.getPrenom() + "',"+
+                    " DROIT = '" + user.getDroit() + "'"+
                     " WHERE ID = " + user.getId();
             System.out.println(query);
             Statement st = Conn.createStatement();
@@ -129,8 +129,31 @@ public class DAO_Utilisateur extends DAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return user;
+    }
+
+    public Utilisateur create(Utilisateur user) {
+        try {
+            System.out.println(user.getNom());
+            System.out.println(user.getEmail());
+            String query = "INSERT INTO utilisateur (EMAIL, PASSWD, NOM, PREMON, DROIT) VALUES('"+user.getEmail()+"', '"+user.getPassword()+"', '"+user.getNom()+"', '"+user.getPrenom()+"', '"+user.getDroit()+"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+
+
+    public void ajout(Utilisateur nouv)
+    {
+        List_User.add(nouv);
     }
 
 }

@@ -36,10 +36,17 @@ public class Enseignant_DAO extends DAO {
         }
         return result;
     }
+
+    //Pour le find d'un enseignant -> find utilisateur
+
    /* @Override
     public void find(String key_word) {
 
     }*/
+
+
+
+
 
     @Override
     public String toString()throws NullPointerException {
@@ -71,6 +78,46 @@ public class Enseignant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public void delete(Enseignant user) {
+        try {
+            String query = "DELETE FROM enseignant WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ user.getId_Utilisateur());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    /*
+    //PAS BESOIN DE UPDATE VU QUE C'EST QUE DES ID
+
+    public Utilisateur update(Utilisateur user) {
+        try {
+            System.out.println(user.getNom());
+            System.out.println(user.getEmail());
+            String query =     "UPDATE utilisateur SET EMAIL = '" + user.getEmail() + "',"+
+                    " PASSWD = '" + user.getPassword() + "',"+
+                    " NOM = '" + user.getNom() + "',"+
+                    " PREMON = '" + user.getPrenom() + "',"+
+                    " DROIT = '" + user.getDroit() + "'"+
+                    " WHERE ID = " + user.getId();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+}
+
+     */
 
 
 }

@@ -26,6 +26,7 @@ public class Cours_DAO extends DAO {
     public List<Cours> getList_Course() {
         return List_Course;
     }
+
     public String find(int Id_cours){
         for(Cours c : List_Course){
             if(c.getId_Cours() == Id_cours){
@@ -33,6 +34,15 @@ public class Cours_DAO extends DAO {
             }
         }
         return "" ;
+    }
+
+    public Cours find2(int id_cours){
+        for(Cours c : List_Course){
+            if(c.getId_Cours() == id_cours){
+                return  c;
+            }
+        }
+        return null;
     }
     /* @Override
      public void find(String key_word) {
@@ -67,4 +77,56 @@ public class Cours_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    public void delete(Cours c) {
+        try {
+            String query = "DELETE FROM cours WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ c.getId_Cours());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Cours update(Cours c) {
+        try {
+            System.out.println(c.getNom());
+
+            String query =     "UPDATE cours SET NOM = '" + c.getNom() + "'"+
+                    " WHERE ID = " + c.getId_Cours();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
+    public Cours create(Cours c) {
+        try {
+            System.out.println(c.getNom());
+            String query = "INSERT INTO cours (NOM) VALUES('"+c.getNom()+"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
+
+    public void ajout(Cours c)
+    {
+        List_Course.add(c);
+    }
+
 }

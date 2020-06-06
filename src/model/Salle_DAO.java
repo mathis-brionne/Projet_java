@@ -39,6 +39,15 @@ public class Salle_DAO extends DAO {
        return "";
    }
 
+    public Salle find(int id){
+        for(Salle c : List_Salle){
+            if(c.getId_Salle() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString()throws NullPointerException {
         String s =null;

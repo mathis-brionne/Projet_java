@@ -82,5 +82,17 @@ public class Seance_Enseignant_DAO extends DAO {
         }
     }
 
+    public void delete(Seance_Enseignant seance) {
+        try {
+            String query = "DELETE FROM seance_ensignants WHERE ID_SEANCE = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ seance.getId_Seance());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

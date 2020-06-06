@@ -1,7 +1,7 @@
 package model;
 
 
-import org.omg.PortableInterceptor.INACTIVE;
+//import org.omg.PortableInterceptor.INACTIVE;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -78,6 +78,19 @@ public class Seance_Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+    public void delete(Seance_Groupe seance) {
+        try {
+            String query = "DELETE FROM seance_groupe WHERE id = ";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query+ seance.getId_Groupe());
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 
 }
