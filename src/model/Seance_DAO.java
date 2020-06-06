@@ -46,8 +46,15 @@ public class Seance_DAO extends DAO{
     public String toString()throws NullPointerException {
         String s =null;
         for (Seance i: List_Seance) {
-            s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
-            ///   pb ave la date         s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%date \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getDate(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///s += String.format("\nid_seance :%d \nsemaine :%d \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
+            ///   pb ave la date
+            Date indate;
+            indate = i.getDate();
+            String dateString = null;
+            SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
+            dateString = sdfr.format(indate);
+
+            s += String.format("\nid_seance :%d \nsemaine :%d \nDate:%s \nheure_debut :%s \nheure_fin :%s \netat:%d \nid_cours :%d \nid_type :%d\n",i.getId_Seance(),i.getSemaine(),dateString,i.getHeure_Debut(),i.getHeure_Fin(),i.getEtat(),i.getId_Cours(),i.getId_Type());
         }
         return s;
     }
@@ -128,7 +135,7 @@ public class Seance_DAO extends DAO{
 
     public Seance update(Seance user) {
         try {
-            String query =     "UPDATE utilisateur SET SEMAINE = '" + user.getSemaine() + "',"+
+            String query =     "UPDATE seance SET SEMAINE = '" + user.getSemaine() + "',"+
                     " DATE = '" + user.getDate() + "',"+
                     " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
                     " HEURE_FIN = '" + user.getHeure_Fin() + "',"+
@@ -155,6 +162,29 @@ public class Seance_DAO extends DAO{
             System.out.println(e.getMessage());
         }
         return user;
+    }
+
+
+    public Seance create(Seance S) {
+        try {
+            ///System.out.println(S.getNom());
+            String query = "INSERT INTO seance (SEMAINE, DATE, HEURE_DEBUT, HEURE_FIN, ETAT, ID_COURS, ID_TYPE) VALUES('"+S.getSemaine()+"', '"+S.getDate()+"', '"+S.getHeure_Debut()+"', '"+S.getHeure_Fin()+"', '"+ S.getEtat()+"', '"+S.getId_Cours()+"', '"+S.getId_Type()+"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return S;
+    }
+
+
+    public void ajout(Seance S)
+    {
+        List_Seance.add(S);
     }
 
 }

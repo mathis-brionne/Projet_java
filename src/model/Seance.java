@@ -47,22 +47,43 @@ public class Seance extends Object {
     public int getId_Seance() {
     return id_seance;
   }
+  public void setId_seance(int id)
+  {
+    this.id_seance = id;
+  }
 
   public int getId_Cours() {
     return id_cours;
+  }
+  public void setId_cours(int id)
+  {
+    this.id_cours = id;
   }
 
   public int getId_Type() {
     return id_type;
   }
+  public void setId_type(int id)
+  {
+    this.id_type = id;
+  }
+
 
   public int getSemaine() {
     return semaine;
+  }
+  public void setSemaine(int id)
+  {
+    this.semaine = id;
   }
 
   public Date getDate() {
     return date;
   }
+  public void setDate(Date d) {
+    this.date = d;
+  }
+
 
   public String getCours() {
     return Cours;
@@ -79,11 +100,20 @@ public class Seance extends Object {
   public String getHeure_Fin() {
     return heure_fin;
   }
+  public void setHeure_fin(String h) {
+    this.heure_fin = h;
+  }
   public String getHeure_Debut() {
     return heure_debut; }
-
+  public void setHeure_debut(String h) {
+    this.heure_debut = h;
+  }
   public int getEtat() {
     return etat;
+  }
+  public void setEtat(int id)
+  {
+    this.etat = id;
   }
 
   @Override
