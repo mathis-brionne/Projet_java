@@ -36,6 +36,14 @@ public class Cours_DAO extends DAO {
         return "" ;
     }
 
+    public int getspId(String Nom){
+        for (Cours c: List_Course) {
+            if (c.getNom().equals(Nom))
+                return c.getId_Cours();
+        }
+        return 0;
+    }
+
     public Cours find2(int id_cours){
         for(Cours c : List_Course){
             if(c.getId_Cours() == id_cours){

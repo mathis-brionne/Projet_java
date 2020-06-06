@@ -1,7 +1,6 @@
 package view;
 
-import model.Seance;
-import model.Seance_DAO;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +8,7 @@ import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 class Ajouter_Seance extends JFrame {
 
@@ -37,7 +37,7 @@ class Ajouter_Seance extends JFrame {
     String[] type_cours = {"Cours","TD","TD","Examen" };
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
     String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
-    String[] cours = {"Mathematique","Java","Traitement du Signal"};
+    private String[] cours = new String[ new Cours_DAO().getList_Course().size()];
     String[] semaines = new String[52];
 
     private String dates[]
@@ -58,6 +58,10 @@ class Ajouter_Seance extends JFrame {
 
     public Ajouter_Seance()
     {
+        List<Cours> rf = new Cours_DAO().getList_Course();
+        for (int y = 0 ; y < rf.size() ; y++) {
+            cours[y] = rf.get(y).getNom();
+        }
         for(int i =0 ; i<52;i++)
         {
             semaines[i]= String.valueOf(i+1);
@@ -75,12 +79,6 @@ class Ajouter_Seance extends JFrame {
         title.setSize(300, 30);
         title.setLocation(300, 30);
         c.add(title);
-
-        name = new JLabel("Name");
-        name.setFont(new Font("Arial", Font.PLAIN, 20));
-        name.setSize(100, 20);
-        name.setLocation(100, 100);
-        c.add(name);
 
         tname = new JTextField();
         tname.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -205,10 +203,12 @@ class Ajouter_Seance extends JFrame {
                       case "19:00:00" : Heure_fin= "20:30:00";
                           break;
                   }
-
-                  Seance S = new Seance(0,(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,(int)cour.getSelectedIndex() + 1,1,"","",""  );
                   Seance_DAO a = new Seance_DAO();
+                  Seance S = new Seance(a.getLastID(),(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1,"","",""  );
                   a.create(S);
+                  Seance_Groupe n = new Seance_Groupe(a.getLastID(),gp.getSelectedIndex()+1);
+                  new Seance_Groupe_DAO().create(n);
+
 
                   //SETTER DE DATE
 
@@ -228,7 +228,6 @@ class Ajouter_Seance extends JFrame {
                   //SETTER DE semaine
 
 
-                  res.setText("Registration Successfully..");
               }
             }
         });

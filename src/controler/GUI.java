@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class GUI {
         public static void main(String[] args) {
-           view.Login L = new view.Login();
+           view.Fenetre L = new view.Fenetre();
         }
 }
 
