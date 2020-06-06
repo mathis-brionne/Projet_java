@@ -152,6 +152,29 @@ public class Seance_DAO extends DAO{
         return user;
     }
 
+
+    public Seance create(Seance S) {
+        try {
+            ///System.out.println(S.getNom());
+            String query = "INSERT INTO seance (SEMAINE, DATE, HEURE_DEBUT, HEURE_FIN, ETAT, ID_COURS, ID_TYPE) VALUES('"+S.getSemaine()+"', '"+S.getDate()+"', '"+S.getHeure_Debut()+"', '"+S.getHeure_Fin()+"', '"+ S.getEtat()+"', '"+S.getId_Cours()+"', '"+S.getId_Type()+"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return S;
+    }
+
+
+    public void ajout(Seance S)
+    {
+        List_Seance.add(S);
+    }
+
 }
 
 
