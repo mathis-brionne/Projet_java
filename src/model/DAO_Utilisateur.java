@@ -129,8 +129,27 @@ public class DAO_Utilisateur extends DAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return user;
     }
 
+    public Utilisateur create(Utilisateur user) {
+        try {
+            System.out.println(user.getNom());
+            System.out.println(user.getEmail());
+            String query = "INSERT INTO utilisateur (EMAIL, PASSWD, NOM, PRENOM, DROIT ) " +
+                    "VALUES ( '" + user.getPassword() + "',"+ user.getNom() + "',"+ user.getPrenom() + "',"+ user.getDroit() + "')";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
+
+
+’
 }
