@@ -1,10 +1,16 @@
 package view;
 
+import model.Seance;
+import model.Seance_DAO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-class Ajouter_Seance extends JFrame implements ActionListener {
+class Ajouter_Seance extends JFrame {
 
     // Components of the Form
     private Container c;
@@ -22,12 +28,16 @@ class Ajouter_Seance extends JFrame implements ActionListener {
     private JButton sub;
     private JLabel semaine;
     private JComboBox sem;
-
+    private JComboBox heure ;
+    private JComboBox type_cour ;
+    private JComboBox cour;
     private JLabel res;
 
-
+    String[] heures = {"08:30:00","10:15:00","12:00:00","13:45:00","15:30:00","17:15:00","19:00:00"};
+    String[] type_cours = {"Cours","TD","TD","Examen" };
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
     String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
+    String[] cours = {"Mathematique","Java","Traitement du Signal"};
     String[] semaines = new String[52];
 
     private String dates[]
@@ -39,9 +49,9 @@ class Ajouter_Seance extends JFrame implements ActionListener {
             "26", "27", "28", "29", "30",
             "31" };
     private String months[]
-            = { "Jan", "feb", "Mar", "Apr",
-            "May", "Jun", "July", "Aug",
-            "Sup", "Oct", "Nov", "Dec" };
+            = { "01", "02", "03", "04",
+            "05", "06", "07", "08",
+            "09", "10", "11", "12" };
     private String years[]
             = { "2020","2021","2022" };
 
@@ -138,13 +148,91 @@ class Ajouter_Seance extends JFrame implements ActionListener {
         sem.setLocation(200, 300);
         c.add(sem);
 
+        heure = new JComboBox(heures);
+        heure.setFont(new Font("Arial", Font.PLAIN, 15));
+        heure.setSize(100, 20);
+        heure.setLocation(200, 350);
+        c.add(heure);
 
+        type_cour = new JComboBox(type_cours);
+        type_cour.setFont(new Font("Arial", Font.PLAIN, 15));
+        type_cour.setSize(100, 20);
+        type_cour.setLocation(200, 400);
+        c.add(type_cour);
+
+        cour = new JComboBox(cours);
+        cour.setFont(new Font("Arial", Font.PLAIN, 15));
+        cour.setSize(100, 20);
+        cour.setLocation(200, 450);
+        c.add(cour);
         sub = new JButton("Submit");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
-        sub.setLocation(150, 350);
-        sub.addActionListener(this);
-        c.add(sub);
+        sub.setLocation(150, 500);
+        sub.addActionListener(new ActionListener() {
+          @Override
+            public void actionPerformed(ActionEvent e) {
+              if (e.getSource() == sub) {
+
+
+                  String test = tname.getText();
+                  System.out.println(test);
+                  // SETTER NOM DU COURS
+           //
+                  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+                  String dateString = (String)year.getSelectedItem()+"-"+(String)month.getSelectedItem()+"-"+(String)date.getSelectedItem();
+                  Date   date = new Date();
+                  try {
+                           date = format.parse ( dateString );
+                  } catch (ParseException ex) {
+                      ex.printStackTrace();
+                  }
+                  String Heure_fin =new String();
+                  switch ((String) heure.getSelectedItem()){
+                      case "08:30:00" : Heure_fin = "10:00:00";
+                          break;
+                      case "10:15:00" : Heure_fin= "11:45:00";
+                          break;
+                      case "12:00:00" : Heure_fin= "13:30:00";
+                          break;
+                      case "13:45:00" : Heure_fin= "15:15:00";
+                          break;
+                      case "15:30:00" : Heure_fin= "17:00:00";
+                          break;
+                      case "17:15:00" : Heure_fin= "18:45:00";
+                          break;
+                      case "19:00:00" : Heure_fin= "20:30:00";
+                          break;
+                  }
+
+                  Seance S = new Seance(0,(int)sem.getSelectedIndex(),date,0,(String)heure.getSelectedItem(),Heure_fin,0,(int)cour.getSelectedIndex() + 1,1,"","",""  );
+                  Seance_DAO a = new Seance_DAO();
+                  a.add(S);
+
+                  //SETTER DE DATE
+
+                  String testpromo= (String)promo.getSelectedItem();
+                  Integer x = Integer.valueOf(testpromo);
+                  System.out.println(x);
+                  //SETTER PROMO
+
+                  String testgroupe= (String)gp.getSelectedItem();
+                  Integer y = Integer.valueOf(testgroupe);
+                  System.out.println(y);
+                  //SETTER DE GROUPE
+
+                  String testsem= (String)sem.getSelectedItem();
+                  Integer z = Integer.valueOf(testsem);
+                  System.out.println(z);
+                  //SETTER DE semaine
+
+
+                  res.setText("Registration Successfully..");
+              }
+            }
+        });
+                c.add(sub);
 
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -156,38 +244,6 @@ class Ajouter_Seance extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == sub) {
-
-
-            String test = tname.getText();
-            System.out.println(test);
-            // SETTER NOM DU COURS
-
-
-
-            //SETTER DE DATE
-
-            String testpromo= (String)promo.getSelectedItem();
-            Integer x = Integer.valueOf(testpromo);
-            System.out.println(x);
-            //SETTER PROMO
-
-            String testgroupe= (String)gp.getSelectedItem();
-            Integer y = Integer.valueOf(testgroupe);
-            System.out.println(y);
-            //SETTER DE GROUPE
-
-            String testsem= (String)sem.getSelectedItem();
-            Integer z = Integer.valueOf(testsem);
-            System.out.println(z);
-            //SETTER DE semaine
-
-
-            res.setText("Registration Successfully..");
-        }
-    }
 
 
     public static void main(String[] args) throws Exception
