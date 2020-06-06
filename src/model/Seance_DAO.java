@@ -128,7 +128,7 @@ public class Seance_DAO extends DAO{
 
     public Seance update(Seance user) {
         try {
-            String query =     "UPDATE utilisateur SET SEMAINE = '" + user.getSemaine() + "',"+
+            String query =     "UPDATE seance SET SEMAINE = '" + user.getSemaine() + "',"+
                     " DATE = '" + user.getDate() + "',"+
                     " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
                     " HEURE_FIN = '" + user.getHeure_Fin() + "',"+

@@ -139,6 +139,26 @@ public class Main {
              System.out.println("Aucune donnée stocko en mémoire");
          }
 
+         /// update une séance
+         Seance C = sea.find(1);
+         System.out.println(C.getSemaine());
+         Integer R = 13;
+         C.setSemaine(R);
+         System.out.println(C.getSemaine());
+         C = sea.update(C);
+
+         /// afficher les séances
+
+
+         Seance_DAO sea2 = new Seance_DAO();
+         try{
+             System.out.println(sea.toString());
+         }catch (NullPointerException n)
+         {
+             System.out.println(n.getCause());
+             System.out.println("Aucune donnée stocko en mémoire");
+         }
+
 
 
 
