@@ -169,7 +169,8 @@ public class Seance_DAO extends DAO{
     public Seance create(Seance S) {
         try {
             ///System.out.println(S.getNom());
-            String query = "INSERT INTO seance (SEMAINE, DATE, HEURE_DEBUT, HEURE_FIN, ETAT, ID_COURS, ID_TYPE) VALUES('"+S.getSemaine()+"', '"+S.getDate()+"', '"+S.getHeure_Debut()+"', '"+S.getHeure_Fin()+"', '"+ S.getEtat()+"', '"+S.getId_Cours()+"', '"+S.getId_Type()+"')";
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String query = "INSERT INTO seance (SEMAINE, DATE, HEURE_DEBUT, HEURE_FIN, ETAT, ID_COURS, ID_TYPE) VALUES('"+S.getSemaine()+"', '"+format.format(S.getDate())+"', '"+S.getHeure_Debut()+"', '"+S.getHeure_Fin()+"', '"+ S.getEtat()+"', '"+S.getId_Cours()+"', '"+S.getId_Type()+"')";
 
             System.out.println(query);
             Statement st = Conn.createStatement();

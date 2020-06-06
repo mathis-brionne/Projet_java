@@ -208,7 +208,7 @@ class Ajouter_Seance extends JFrame {
 
                   Seance S = new Seance(0,(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,(int)cour.getSelectedIndex() + 1,1,"","",""  );
                   Seance_DAO a = new Seance_DAO();
-                  a.add(S);
+                  a.create(S);
 
                   //SETTER DE DATE
 
