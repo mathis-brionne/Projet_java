@@ -140,12 +140,24 @@ public class Main {
          }
 
          /// update une séance
+         /*
          Seance C = sea.find(1);
          System.out.println(C.getSemaine());
          Integer R = 12;
          C.setSemaine(R);
          System.out.println(C.getSemaine());
          C = sea.update(C);
+
+          */
+
+         /// suprimer une seance envoyé en parametre
+
+         int x= 2;
+         Seance S = sea.find(x);
+
+         System.out.println(S.getId_Cours());
+         sea.delete(S);
+
 
          /// afficher les séances
 
