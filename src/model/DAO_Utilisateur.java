@@ -159,6 +159,16 @@ public class DAO_Utilisateur extends DAO {
         return user;
     }
 
+    public int getLastID(){
+        int i = 0 ;
+        for (Utilisateur a :List_User) {
+            if (a.getId()>i){
+                i = a.getId();
+            }
+        }
+        return i + 1;
+    }
+
 
 
     public void ajout(Utilisateur nouv)

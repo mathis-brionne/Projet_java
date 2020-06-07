@@ -40,6 +40,14 @@ public class Groupe_DAO extends DAO {
         }
         return null;
     }
+    public Groupe find2(int id){
+        for(Groupe c : List_Group){
+            if(c.getId_Promotion() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
     public int getspId(int Id , String name){
         for(Groupe c : List_Group){
             if(c.getId_Promotion() == Id && name.equals(c.getNom())){

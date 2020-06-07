@@ -32,6 +32,17 @@ public class Seance_DAO extends DAO{
         }        return result;
 
     }
+
+    public Seance find2(int a){
+        int A = - 1 ;
+        for (Seance i: List_Seance) {
+
+            if(a ==i.getId_Seance()){
+                return i;
+            }
+        }
+
+    }
     public int getLastID(){
         int i = 0 ;
         for (Seance a :List_Seance) {
@@ -140,8 +151,9 @@ public class Seance_DAO extends DAO{
 
     public Seance update(Seance user) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String query =     "UPDATE seance SET SEMAINE = '" + user.getSemaine() + "',"+
-                    " DATE = '" + user.getDate() + "',"+
+                    " DATE = '" + format.format(user.getDate()) + "',"+
                     " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
                     " HEURE_FIN = '" + user.getHeure_Fin() + "',"+
                     " ETAT = '" + user.getEtat() + "'"+

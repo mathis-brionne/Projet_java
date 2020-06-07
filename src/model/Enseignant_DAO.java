@@ -92,6 +92,16 @@ public class Enseignant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public int getLastID(){
+        int i = 0 ;
+        for (Enseignant a :List_Enseignant) {
+            if (a.getId_Utilisateur()>i){
+                i = a.getId_Utilisateur();
+            }
+        }
+        return i + 1;
+    }
     /*
     //PAS BESOIN DE UPDATE VU QUE C'EST QUE DES ID
 

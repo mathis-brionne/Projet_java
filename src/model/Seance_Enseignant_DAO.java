@@ -107,4 +107,20 @@ public class Seance_Enseignant_DAO extends DAO {
         }
     }
 
+    public Seance_Enseignant update(Seance_Enseignant c) {
+        try {
+
+            String query =     "UPDATE seance_enseignants SET ID_ENSEIGNANT = '" + c.getId_Enseignant() + "'"+
+                    " WHERE ID = " + c.getId_Seance();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
 }

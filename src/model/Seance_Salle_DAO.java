@@ -97,5 +97,21 @@ public class Seance_Salle_DAO extends DAO {
         }
     }
 
+    public Seance_Salle update(Seance_Salle c) {
+        try {
+
+            String query =     "UPDATE seance_salle SET ID_SALLE = '" + c.getId_Salle() + "'"+
+                    " WHERE ID = " + c.getId_Seance();
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+
 
 }
