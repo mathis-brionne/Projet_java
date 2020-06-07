@@ -144,8 +144,9 @@ public class Seance_DAO extends DAO{
 
     public Seance update(Seance user) {
         try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             String query =     "UPDATE seance SET SEMAINE = '" + user.getSemaine() + "',"+
-                    " DATE = '" + user.getDate() + "',"+
+                    " DATE = '" + format.format(user.getDate()) + "',"+
                     " HEURE_DEBUT = '" + user.getHeure_Debut() + "',"+
                     " HEURE_FIN = '" + user.getHeure_Fin() + "',"+
                     " ETAT = '" + user.getEtat() + "'"+
