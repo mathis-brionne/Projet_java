@@ -8,10 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Enseignant dao.
+ */
 public class Enseignant_DAO extends DAO {
     private List<Enseignant> List_Enseignant;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Enseignant dao.
+     */
     public Enseignant_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,11 +28,29 @@ public class Enseignant_DAO extends DAO {
         List_Enseignant = new ArrayList<Enseignant>();
         this.setData();
     }
-
+    public int getIDcour(int ID_user)
+    {
+        for (Enseignant A: List_Enseignant) {
+            if (A.getId_Utilisateur()==ID_user)
+                return A.getId_cours();
+        }
+        return 0;
+    }
+    /**
+     * Gets list enseignant.
+     *
+     * @return the list enseignant
+     */
     public List<Enseignant> getList_Enseignant() {
         return List_Enseignant;
     }
 
+    /**
+     * Finds array list.
+     *
+     * @param ID_users the id users
+     * @return the array list
+     */
     public ArrayList<Integer> finds(int ID_users){
         ArrayList<Integer> result = new ArrayList<Integer>();
         for (Enseignant E: List_Enseignant) {
@@ -80,6 +104,11 @@ public class Enseignant_DAO extends DAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param user the user
+     */
     public void delete(Enseignant user) {
         try {
             String query = "DELETE FROM enseignant WHERE id = ";
@@ -93,6 +122,11 @@ public class Enseignant_DAO extends DAO {
         }
     }
 
+    /**
+     * Get last id int.
+     *
+     * @return the int
+     */
     public int getLastID(){
         int i = 0 ;
         for (Enseignant a :List_Enseignant) {
@@ -103,6 +137,12 @@ public class Enseignant_DAO extends DAO {
         return i + 1;
     }
 
+    /**
+     * Create enseignant.
+     *
+     * @param user the user
+     * @return the enseignant
+     */
     public Enseignant create(Enseignant user) {
         try {
             String query = "INSERT INTO ensignant (ID_UTILISATEUR, ID_COURS) VALUES('"+user.getId_Utilisateur()+"', '"+user.getId_cours() +"')";

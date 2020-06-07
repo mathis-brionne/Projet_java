@@ -15,16 +15,37 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/**
+ * The type Planning.
+ */
 public class planning extends JFrame {
 
-    //JToggleButton btngreen;
+    /**
+     * The Model.
+     */
+//JToggleButton btngreen;
     //JButton valid = new JButton("Confirmer");
     ModeleStatique model ;
+    /**
+     * The Semaine.
+     */
     int Semaine;
+    /**
+     * The Table.
+     */
     JTable table;
 
+    /**
+     * The Test.
+     */
     boolean test;
 
+    /**
+     * Instantiates a new Planning.
+     *
+     * @param seances    the seances
+     * @param Semaineset the semaineset
+     */
     public planning(Seance[][][] seances, int Semaineset) {
         this.Semaine = Semaineset;
         String[] semaine = new String[52];
@@ -87,12 +108,21 @@ public class planning extends JFrame {
 
     }
 
+    /**
+     * The type Modele statique.
+     */
     public class ModeleStatique extends AbstractTableModel {
 
+        /**
+         * The Data.
+         */
         Planning[] data;
 
         private final String[] title = { null, "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi" };
 
+        /**
+         * Instantiates a new Modele statique.
+         */
         public ModeleStatique() {
             super();
 
@@ -106,6 +136,13 @@ public class planning extends JFrame {
                     new Planning("19h-20h30", null, null, null, null,null),
             };
         }
+
+        /**
+         * Instantiates a new Modele statique.
+         *
+         * @param S       the s
+         * @param Semaine the semaine
+         */
         public ModeleStatique(Seance[][][] S, int Semaine) {
             super();
            
@@ -176,6 +213,9 @@ public class planning extends JFrame {
         }
     }
 
+    /**
+     * The type Planning.
+     */
     public class Planning {
 
         private String heure;
@@ -185,6 +225,16 @@ public class planning extends JFrame {
         private Seance jeudi;
         private Seance vendredi;
 
+        /**
+         * Instantiates a new Planning.
+         *
+         * @param heure    the heure
+         * @param lundi    the lundi
+         * @param mardi    the mardi
+         * @param mercredi the mercredi
+         * @param jeudi    the jeudi
+         * @param vendredi the vendredi
+         */
         public Planning(String heure, Seance lundi, Seance mardi, Seance mercredi,Seance jeudi, Seance vendredi) {
             this.heure = heure;
             this.lundi = lundi;
@@ -195,6 +245,11 @@ public class planning extends JFrame {
 
         }
 
+        /**
+         * Gets heure.
+         *
+         * @return the heure
+         */
         public String getHeure() {
             return heure;
         }
@@ -202,6 +257,9 @@ public class planning extends JFrame {
     }
 
 
+    /**
+     * The type Color cell renderer.
+     */
     public class ColorCellRenderer extends DefaultTableCellRenderer {
 
         @Override

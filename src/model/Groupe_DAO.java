@@ -8,10 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Groupe dao.
+ */
 public class Groupe_DAO extends DAO {
     private List<Groupe> List_Group;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Groupe dao.
+     */
     public Groupe_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -23,6 +29,11 @@ public class Groupe_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list group.
+     *
+     * @return the list group
+     */
     public List<Groupe> getList_Group() {
         return List_Group;
     }
@@ -32,6 +43,12 @@ public class Groupe_DAO extends DAO {
 
     }*/
 
+    /**
+     * Find groupe.
+     *
+     * @param id the id
+     * @return the groupe
+     */
     public Groupe find(int id){
         for(Groupe c : List_Group){
             if(c.getId_Groupe() == id){
@@ -40,6 +57,13 @@ public class Groupe_DAO extends DAO {
         }
         return null;
     }
+
+    /**
+     * Find 2 groupe.
+     *
+     * @param id the id
+     * @return the groupe
+     */
     public Groupe find2(int id){
         for(Groupe c : List_Group){
             if(c.getId_Promotion() == id){
@@ -48,6 +72,14 @@ public class Groupe_DAO extends DAO {
         }
         return null;
     }
+
+    /**
+     * Getsp id int.
+     *
+     * @param Id   the id
+     * @param name the name
+     * @return the int
+     */
     public int getspId(int Id , String name){
         for(Groupe c : List_Group){
             if(c.getId_Promotion() == Id && name.equals(c.getNom())){
@@ -87,6 +119,12 @@ public class Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Delete.
+     *
+     * @param user the user
+     */
     public void delete(Groupe user) {
         try {
             String query = "DELETE FROM groupe WHERE id = ";

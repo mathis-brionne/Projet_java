@@ -12,10 +12,16 @@ import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
 import org.jfree.data.*;
 
+/**
+ * The type Stat.
+ */
 public class Stat extends JFrame {
     private JPanel pnl;
 
 
+    /**
+     * Instantiates a new Stat.
+     */
     public Stat() {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -79,6 +85,11 @@ public class Stat extends JFrame {
         pnl.add(cPanel);
     }
 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main(String args[]) {
         Stat tpc = new Stat();
         tpc.setVisible(true);

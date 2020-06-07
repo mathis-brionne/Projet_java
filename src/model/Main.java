@@ -11,11 +11,19 @@ import java.io.*;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
-import java.util.Calendar; 
+import java.util.Calendar;
 
+/**
+ * The type Main.
+ */
 public class Main {
-      
-     public static void main(String[] args) {
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
 
 
          /// afficher les users
@@ -282,6 +290,13 @@ public class Main {
 
          
     }
+
+    /**
+     * Display.
+     *
+     * @param a the a
+     * @param b the b
+     */
     public void display(String a , String b){
          System.out.print(a+b);
     }

@@ -7,10 +7,22 @@ import model.Seance_Salle_DAO;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Planning.
+ */
 public class Planning {
+    /**
+     * Instantiates a new Planning.
+     */
     public  Planning(){}
 
     private Seance[][][] Seances = new Seance[52][5][7];
+
+    /**
+     * Instantiates a new Planning.
+     *
+     * @param Id_seance the id seance
+     */
     public  Planning(ArrayList<Integer> Id_seance) {
         System.out.println(Id_seance.size());
         Seance_DAO seance_dao = new Seance_DAO();
@@ -30,6 +42,12 @@ public class Planning {
             }
         }
     }
+
+    /**
+     * Get seances seance [ ] [ ] [ ].
+     *
+     * @return the seance [ ] [ ] [ ]
+     */
     public Seance[][][] getSeances() {
         return Seances;
     }

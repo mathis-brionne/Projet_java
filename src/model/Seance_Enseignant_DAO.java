@@ -9,10 +9,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Seance enseignant dao.
+ */
 public class Seance_Enseignant_DAO extends DAO {
     private List<Seance_Enseignant> List_Seance_Enseignant;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Seance enseignant dao.
+     */
     public Seance_Enseignant_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -24,12 +30,23 @@ public class Seance_Enseignant_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list seance enseignant.
+     *
+     * @return the list seance enseignant
+     */
     public List<Seance_Enseignant> getList_Seance_Enseignant() {
         return List_Seance_Enseignant;
     }
 
 
-   /* @Override
+    /**
+     * Finds array list.
+     *
+     * @param Id_users the id users
+     * @return the array list
+     */
+/* @Override
     public void find(String key_word) {
 
     }*/
@@ -42,6 +59,13 @@ public class Seance_Enseignant_DAO extends DAO {
         }
         return result ;
     }
+
+    /**
+     * Find int.
+     *
+     * @param Id_Seance the id seance
+     * @return the int
+     */
     public int find(int Id_Seance){
         for (Seance_Enseignant a :List_Seance_Enseignant) {
             if (a.getId_Enseignant() == Id_Seance){
@@ -83,6 +107,11 @@ public class Seance_Enseignant_DAO extends DAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param seance the seance
+     */
     public void delete(Seance_Enseignant seance) {
         try {
             String query = "DELETE FROM seance_ensignants WHERE ID_SEANCE = ";
@@ -95,6 +124,12 @@ public class Seance_Enseignant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Create.
+     *
+     * @param S the s
+     */
     public void create(Seance_Enseignant S){
         try {
             String query = "INSERT INTO seance_ensignants (ID_SEANCE, ID_ENSEIGNANT) VALUES('"+S.getId_Seance()+"', '"+S.getId_Enseignant()+"' )";
@@ -107,6 +142,12 @@ public class Seance_Enseignant_DAO extends DAO {
         }
     }
 
+    /**
+     * Update seance enseignant.
+     *
+     * @param c the c
+     * @return the seance enseignant
+     */
     public Seance_Enseignant update(Seance_Enseignant c) {
         try {
 

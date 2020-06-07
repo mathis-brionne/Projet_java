@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Ajouter seance.
+ */
 class Ajouter_Seance extends JFrame {
 
     // Components of the Form
@@ -35,11 +38,26 @@ class Ajouter_Seance extends JFrame {
     private JComboBox profcb;
     private JLabel res;
 
+    /**
+     * The Heures.
+     */
     String[] heures = {"08:30:00","10:15:00","12:00:00","13:45:00","15:30:00","17:15:00","19:00:00"};
+    /**
+     * The Type cours.
+     */
     String[] type_cours = {"Cours","TD","TD","Examen" };
+    /**
+     * The Promos.
+     */
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
+    /**
+     * The Groupes.
+     */
     String[] groupes = {"TD1", "TD2", "TD3", "TD4", "TD5", "TD6", "TD7","TD8","TD9","TD10","TD11","TD12"};
     private String[] cours = new String[ new Cours_DAO().getList_Course().size()];
+    /**
+     * The Semaines.
+     */
     String[] semaines = new String[52];
     private String dates[]
             = { "1", "2", "3", "4", "5",
@@ -58,6 +76,10 @@ class Ajouter_Seance extends JFrame {
 
     private String[] salle = new String[new Salle_DAO().getList_Salle().size()];
     private String[] profs = new String[new Enseignant_DAO().getList_Enseignant().size()];
+
+    /**
+     * Instantiates a new Ajouter seance.
+     */
     public Ajouter_Seance()
     {
         List<Cours> rf = new Cours_DAO().getList_Course();
@@ -245,7 +267,12 @@ class Ajouter_Seance extends JFrame {
     }
 
 
-
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception
     {
         Ajouter_Seance f = new Ajouter_Seance();

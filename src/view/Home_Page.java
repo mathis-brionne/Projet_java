@@ -7,7 +7,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Home page.
+ */
 public class Home_Page {
+    /**
+     * Instantiates a new Home page.
+     *
+     * @param E the e
+     */
     public Home_Page(Eleve E ) {
         System.out.println(E.getPlannig().toString());
         JPanel panel = new JPanel();

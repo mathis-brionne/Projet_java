@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Supprimet séance.
+ */
 public class Supprimet_séance extends JFrame {
     // Components of the Form
     private Container c;
@@ -22,6 +25,9 @@ public class Supprimet_séance extends JFrame {
 
     private JLabel res;
 
+    /**
+     * Instantiates a new Supprimet séance.
+     */
     public Supprimet_séance()
     {
 
@@ -80,7 +86,12 @@ public class Supprimet_séance extends JFrame {
     }
 
 
-
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception
     {
         Supprimet_séance f = new Supprimet_séance();

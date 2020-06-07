@@ -5,6 +5,9 @@ import model.Utilisateur;
 
 import java.util.List;
 
+/**
+ * The type Utilisateurs.
+ */
 public class Utilisateurs {
    /* protected Utilisateur User;
    public Utilisateurs(String username){

@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Salle dao.
+ */
 public class Salle_DAO extends DAO {
     private List<Salle> List_Salle;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Salle dao.
+     */
     public Salle_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,11 +28,22 @@ public class Salle_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list salle.
+     *
+     * @return the list salle
+     */
     public List<Salle> getList_Salle() {
         return List_Salle;
     }
 
-   /* @Override
+    /**
+     * Finds string.
+     *
+     * @param Id_salle the id salle
+     * @return the string
+     */
+/* @Override
     public void find(String key_word) {
 
     }*/
@@ -38,6 +55,13 @@ public class Salle_DAO extends DAO {
        }
        return "";
    }
+
+    /**
+     * Getsp id int.
+     *
+     * @param nom the nom
+     * @return the int
+     */
     public int getspId(String nom){
         for (Salle s : List_Salle){
             if (s.getNom().equals(nom)){
@@ -46,6 +70,13 @@ public class Salle_DAO extends DAO {
         }
         return 0;
     }
+
+    /**
+     * Find salle.
+     *
+     * @param id the id
+     * @return the salle
+     */
     public Salle find(int id){
         for(Salle c : List_Salle){
             if(c.getId_Salle() == id){

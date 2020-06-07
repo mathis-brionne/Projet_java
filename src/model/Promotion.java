@@ -1,12 +1,21 @@
 
 package model;
 
+/**
+ * The type Promotion.
+ */
 public class Promotion {
   private int id_promotion = 0;
   private String nom = "";
 
 
-  public Promotion(int id_promotion, String nom ) {
+    /**
+     * Instantiates a new Promotion.
+     *
+     * @param id_promotion the id promotion
+     * @param nom          the nom
+     */
+    public Promotion(int id_promotion, String nom ) {
     this.id_promotion = id_promotion;
     this.nom=nom;
     
@@ -14,16 +23,36 @@ public class Promotion {
     System.out.println(nom);
 
   }
-  public Promotion(){};
-     
-  public int getId_Promotion() {
+
+    /**
+     * Instantiates a new Promotion.
+     */
+    public Promotion(){};
+
+    /**
+     * Gets id promotion.
+     *
+     * @return the id promotion
+     */
+    public int getId_Promotion() {
     return id_promotion;
   }
 
-  public String getNom() {
+    /**
+     * Gets nom.
+     *
+     * @return the nom
+     */
+    public String getNom() {
     return nom;
   }
-  public void setNom(String nom) {
+
+    /**
+     * Sets nom.
+     *
+     * @param nom the nom
+     */
+    public void setNom(String nom) {
     this.nom = nom;
   }
 }

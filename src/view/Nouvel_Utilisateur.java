@@ -22,6 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Nouvel utilisateur.
+ */
 class Nouvel_Utilisateur extends JFrame {
 
     // Components of the Form
@@ -52,11 +55,19 @@ class Nouvel_Utilisateur extends JFrame {
 
     private String dates[]
             = { "Etudiant","Enseignant" };
+    /**
+     * The Promos.
+     */
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
+    /**
+     * The Groupes.
+     */
     String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
 
 
-
+    /**
+     * Instantiates a new Nouvel utilisateur.
+     */
     public Nouvel_Utilisateur()
     {
 
@@ -193,8 +204,12 @@ class Nouvel_Utilisateur extends JFrame {
     }
 
 
-
-
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception
     {
         Nouvel_Utilisateur f = new Nouvel_Utilisateur();

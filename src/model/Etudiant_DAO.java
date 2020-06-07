@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Etudiant dao.
+ */
 public class Etudiant_DAO extends DAO {
     private List<Etudiant> List_Etudiant;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Etudiant dao.
+     */
     public Etudiant_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,20 +28,30 @@ public class Etudiant_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list etudiant.
+     *
+     * @return the list etudiant
+     */
     public List<Etudiant> getList_Etudiant() {
         return List_Etudiant;
     }
 
-    //find un etudiant - > find un utilisateur
+    /**
+     * Find int.
+     *
+     * @param ID_utilisateur the ID_utilisateur
+     * @return the int
+     */
+//find un etudiant - > find un utilisateur
    /* @Override
     public void find(String key_word) {
 
     }*/
-   public int find(int a){
+   public int find(int ID_utilisateur){
        int A = - 1 ;
        for (Etudiant i: List_Etudiant) {
-           System.out.println("Id_groupe :"+a);
-           if(a ==i.getId_Utilisateur()){
+           if(ID_utilisateur ==i.getId_Utilisateur()){
                A = i.getId_Groupe() ;
            }
        }
@@ -72,6 +88,12 @@ public class Etudiant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Delete.
+     *
+     * @param user the user
+     */
     public void delete(Etudiant user) {
         try {
             String query = "DELETE FROM etudiant WHERE ID = ";
@@ -85,6 +107,11 @@ public class Etudiant_DAO extends DAO {
         }
     }
 
+    /**
+     * Get last id int.
+     *
+     * @return the int
+     */
     public int getLastID(){
         int i = 0 ;
         for (Etudiant a :List_Etudiant) {
@@ -95,6 +122,12 @@ public class Etudiant_DAO extends DAO {
         return i + 1;
     }
 
+    /**
+     * Create etudiant.
+     *
+     * @param user the user
+     * @return the etudiant
+     */
     public Etudiant create(Etudiant user) {
         try {
             String query = "INSERT INTO etudiant (ID_UTILISATEUR, NUMERO, ID_GROUPE) VALUES('"+user.getId_Utilisateur()+"', '"+user.getNumero()+"', '"+user.getId_Groupe() +"')";

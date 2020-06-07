@@ -12,6 +12,9 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * The type Seance.
+ */
 public class Seance extends Object {
   private int id_seance = 0;
   private int semaine = 0;
@@ -26,7 +29,21 @@ public class Seance extends Object {
   private String Prof ="";
   private String salle = "";
   private String Cours = "";
-  public Seance(int id_seance, int semaine ,Date date, int creaneau, String heure_debut, String heure_fin, int etat, int id_cours , int id_type) {
+
+    /**
+     * Instantiates a new Seance.
+     *
+     * @param id_seance   the id seance
+     * @param semaine     the semaine
+     * @param date        the date
+     * @param creaneau    the creaneau
+     * @param heure_debut the heure debut
+     * @param heure_fin   the heure fin
+     * @param etat        the etat
+     * @param id_cours    the id cours
+     * @param id_type     the id type
+     */
+    public Seance(int id_seance, int semaine ,Date date, int creaneau, String heure_debut, String heure_fin, int etat, int id_cours , int id_type) {
     this.id_seance = id_seance;
     this.semaine=semaine;
     this.date=date;
@@ -37,83 +54,203 @@ public class Seance extends Object {
     this.id_type=id_type;
     this.creaneau = creaneau ;
   }
-  public void setAfffichage(){
+
+    /**
+     * Set afffichage.
+     */
+    public void setAfffichage(){
     this.Cours = new Cours_DAO().find(id_cours);
     this.salle = new Salle_DAO().finds(new Seance_Salle_DAO().find(id_seance));
     this.Prof = new DAO_Utilisateur().getname(new Seance_Enseignant_DAO().find(id_seance));
   }
-  public Seance(){}
+
+    /**
+     * Instantiates a new Seance.
+     */
+    public Seance(){}
+
+    /**
+     * Gets creaneau.
+     *
+     * @return the creaneau
+     */
     public int getCreaneau() {
         return creaneau;
     }
+
+    /**
+     * Gets id seance.
+     *
+     * @return the id seance
+     */
     public int getId_Seance() {
     return id_seance;
   }
-  public void setId_seance(int id)
+
+    /**
+     * Sets id seance.
+     *
+     * @param id the id
+     */
+    public void setId_seance(int id)
   {
     this.id_seance = id;
   }
 
-  public int getId_Cours() {
+    /**
+     * Gets id cours.
+     *
+     * @return the id cours
+     */
+    public int getId_Cours() {
     return id_cours;
   }
-  public void setId_cours(int id)
+
+    /**
+     * Sets id cours.
+     *
+     * @param id the id
+     */
+    public void setId_cours(int id)
   {
     this.id_cours = id;
   }
 
-  public int getId_Type() {
+    /**
+     * Gets id type.
+     *
+     * @return the id type
+     */
+    public int getId_Type() {
     return id_type;
   }
-  public void setId_type(int id)
+
+    /**
+     * Sets id type.
+     *
+     * @param id the id
+     */
+    public void setId_type(int id)
   {
     this.id_type = id;
   }
 
 
-  public int getSemaine() {
+    /**
+     * Gets semaine.
+     *
+     * @return the semaine
+     */
+    public int getSemaine() {
     return semaine;
   }
-  public void setSemaine(int id)
+
+    /**
+     * Sets semaine.
+     *
+     * @param id the id
+     */
+    public void setSemaine(int id)
   {
     this.semaine = id;
   }
 
-  public Date getDate() {
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
+    public Date getDate() {
     return date;
   }
-  public void setDate(Date d) {
+
+    /**
+     * Sets date.
+     *
+     * @param d the d
+     */
+    public void setDate(Date d) {
     this.date = d;
   }
 
 
-  public String getCours() {
+    /**
+     * Gets cours.
+     *
+     * @return the cours
+     */
+    public String getCours() {
     return Cours;
   }
 
-  public String getSalle() {
+    /**
+     * Gets salle.
+     *
+     * @return the salle
+     */
+    public String getSalle() {
     return salle;
   }
 
-  public String getProf() {
+    /**
+     * Gets prof.
+     *
+     * @return the prof
+     */
+    public String getProf() {
     return Prof;
   }
 
-  public String getHeure_Fin() {
+    /**
+     * Gets heure fin.
+     *
+     * @return the heure fin
+     */
+    public String getHeure_Fin() {
     return heure_fin;
   }
-  public void setHeure_fin(String h) {
+
+    /**
+     * Sets heure fin.
+     *
+     * @param h the h
+     */
+    public void setHeure_fin(String h) {
     this.heure_fin = h;
   }
-  public String getHeure_Debut() {
+
+    /**
+     * Gets heure debut.
+     *
+     * @return the heure debut
+     */
+    public String getHeure_Debut() {
     return heure_debut; }
-  public void setHeure_debut(String h) {
+
+    /**
+     * Sets heure debut.
+     *
+     * @param h the h
+     */
+    public void setHeure_debut(String h) {
     this.heure_debut = h;
   }
-  public int getEtat() {
+
+    /**
+     * Gets etat.
+     *
+     * @return the etat
+     */
+    public int getEtat() {
     return etat;
   }
-  public void setEtat(int id)
+
+    /**
+     * Sets etat.
+     *
+     * @param id the id
+     */
+    public void setEtat(int id)
   {
     this.etat = id;
   }

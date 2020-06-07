@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Nouveau prof.
+ */
 class Nouveau_Prof extends JFrame {
 
     // Components of the Form
@@ -26,6 +29,12 @@ class Nouveau_Prof extends JFrame {
 
     private String[] salle = new String[new Salle_DAO().getList_Salle().size()];
     private String[] profs = new String[new Enseignant_DAO().getList_Enseignant().size()];
+
+    /**
+     * Instantiates a new Nouveau prof.
+     *
+     * @param u the u
+     */
     public Nouveau_Prof(Utilisateur u)
     {
 

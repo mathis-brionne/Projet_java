@@ -1,31 +1,66 @@
 
 package model;
 
+/**
+ * The type Cours.
+ */
 public class Cours {
   private int id_cours = 0;
   private String nom = "";
 
 
-  public Cours(int id_cours, String nom ) {
+    /**
+     * Instantiates a new Cours.
+     *
+     * @param id_cours the id cours
+     * @param nom      the nom
+     */
+    public Cours(int id_cours, String nom ) {
     this.id_cours= id_cours;
     this.nom=nom;
     
     System.out.println(id_cours);
     System.out.println(nom);
   }
-  public Cours(){};
-     
-  public int getId_Cours() {
+
+    /**
+     * Instantiates a new Cours.
+     */
+    public Cours(){};
+
+    /**
+     * Gets id cours.
+     *
+     * @return the id cours
+     */
+    public int getId_Cours() {
     return id_cours;
   }
-  public void setId(int id) {
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
     this.id_cours = id;
   }
 
-  public String getNom() {
+    /**
+     * Gets nom.
+     *
+     * @return the nom
+     */
+    public String getNom() {
     return nom;
   }
-  public void setNom(String nom) {
+
+    /**
+     * Sets nom.
+     *
+     * @param nom the nom
+     */
+    public void setNom(String nom) {
     this.nom = nom;
   }
 

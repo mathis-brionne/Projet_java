@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * The type Case planning.
+ */
 class Case_Planning extends JFrame implements ActionListener {
 
     // Components of the Form
@@ -14,6 +17,9 @@ class Case_Planning extends JFrame implements ActionListener {
     private JButton sub;
     private JLabel res;
 
+    /**
+     * Instantiates a new Case planning.
+     */
     public Case_Planning()
     {
         setTitle("Test Semaine");
@@ -73,6 +79,12 @@ class Case_Planning extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception
     {
         Case_Planning f = new Case_Planning();

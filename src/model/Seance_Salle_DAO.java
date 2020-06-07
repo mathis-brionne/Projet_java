@@ -9,10 +9,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Seance salle dao.
+ */
 public class Seance_Salle_DAO extends DAO {
     private List<Seance_Salle> List_Seance_Salle;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Seance salle dao.
+     */
     public Seance_Salle_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -24,12 +30,23 @@ public class Seance_Salle_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list seance salle.
+     *
+     * @return the list seance salle
+     */
     public List<Seance_Salle> getList_Seance_Salle() {
         return List_Seance_Salle;
     }
 
 
-   /* @Override
+    /**
+     * Find int.
+     *
+     * @param id_seance the id seance
+     * @return the int
+     */
+/* @Override
     public void find(String key_word) {
 
     }*/
@@ -73,6 +90,11 @@ public class Seance_Salle_DAO extends DAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param seance the seance
+     */
     public void delete(Seance_Salle seance) {
         try {
             String query = "DELETE FROM seance_salle WHERE ID_SEANCE = ";
@@ -86,6 +108,11 @@ public class Seance_Salle_DAO extends DAO {
         }
     }
 
+    /**
+     * Create.
+     *
+     * @param S the s
+     */
     public void create(Seance_Salle S) {
         try {
             String query = "INSERT INTO seance_salle (ID_SALLE, ID_SEANCE) VALUES('"+S.getId_Salle() +"', '"+S.getId_Seance()+"')";
@@ -97,6 +124,12 @@ public class Seance_Salle_DAO extends DAO {
         }
     }
 
+    /**
+     * Update seance salle.
+     *
+     * @param c the c
+     * @return the seance salle
+     */
     public Seance_Salle update(Seance_Salle c) {
         try {
 

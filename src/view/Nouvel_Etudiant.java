@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Nouvel etudiant.
+ */
 class Nouvel_Etudiant extends JFrame {
 
     // Components of the Form
@@ -29,10 +32,21 @@ class Nouvel_Etudiant extends JFrame {
     private JLabel res;
 
 
+    /**
+     * The Promos.
+     */
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
+    /**
+     * The Groupes.
+     */
     String[] groupes = {"TD1", "TD2", "TD3", "TD4", "TD5", "TD6", "TD7","TD8","TD9","TD10","TD11","TD12"};
 
 
+    /**
+     * Instantiates a new Nouvel etudiant.
+     *
+     * @param u the u
+     */
     public Nouvel_Etudiant(Utilisateur u)
     {
 

@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Site dao.
+ */
 public class Site_DAO extends DAO {
     private List<Site> List_Site;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Site dao.
+     */
     public Site_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,6 +28,11 @@ public class Site_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list site.
+     *
+     * @return the list site
+     */
     public List<Site> getList_Site() {
         return List_Site;
     }
@@ -60,7 +71,13 @@ public class Site_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
-    //PAS BESOIN
+
+    /**
+     * Delete.
+     *
+     * @param s the s
+     */
+//PAS BESOIN
     public void delete(Site s) {
         try {
             String query = "DELETE FROM site WHERE ID = ";

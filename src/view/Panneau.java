@@ -14,6 +14,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * The type Panneau.
+ */
 public class Panneau extends JPanel {
     private JButton boutton = new JButton("submit");
 
@@ -75,6 +78,10 @@ public class Panneau extends JPanel {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Dispose.
+     */
     public void dispose() {
         JFrame parent = (JFrame) this.getTopLevelAncestor();
         parent.dispose();

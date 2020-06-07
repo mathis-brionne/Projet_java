@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Type cours dao.
+ */
 public class Type_Cours_DAO extends DAO {
     private List<Type_Cours> List_Type_Cours;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Type cours dao.
+     */
     public Type_Cours_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,6 +28,11 @@ public class Type_Cours_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list type cours.
+     *
+     * @return the list type cours
+     */
     public List<Type_Cours> getList_Type_Cours() {
         return List_Type_Cours;
     }
@@ -61,6 +72,11 @@ public class Type_Cours_DAO extends DAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param type the type
+     */
     public void delete(Type_Cours type) {
         try {
             String query = "DELETE FROM type_cours WHERE ID = ";

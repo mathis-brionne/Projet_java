@@ -11,7 +11,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Login.
+ */
 public class Login {
+    /**
+     * Instantiates a new Login.
+     */
     public Login() {
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();

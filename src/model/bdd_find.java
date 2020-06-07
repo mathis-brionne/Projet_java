@@ -3,8 +3,22 @@ package model;
 import java.sql.*;
 import model.DaoFactory;
 
+/**
+ * The type Bdd find.
+ */
 public class bdd_find {
+    /**
+     * Instantiates a new Bdd find.
+     */
     public bdd_find(){}
+
+    /**
+     * Find utilisateur.
+     *
+     * @param username the username
+     * @return the utilisateur
+     * @throws ClassNotFoundException the class not found exception
+     */
     public Utilisateur find(String username) throws ClassNotFoundException {
         Utilisateur U = null;
         Connection conn = null;

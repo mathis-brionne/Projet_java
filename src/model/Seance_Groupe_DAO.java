@@ -11,10 +11,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Seance groupe dao.
+ */
 public class Seance_Groupe_DAO extends DAO {
     private List<Seance_Groupe> List_Seance_Groupe;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Seance groupe dao.
+     */
     public Seance_Groupe_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -26,12 +32,23 @@ public class Seance_Groupe_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list seance salle.
+     *
+     * @return the list seance salle
+     */
     public List<Seance_Groupe> getList_Seance_Salle() {
         return List_Seance_Groupe;
     }
 
 
-   /* @Override
+    /**
+     * Finds array list.
+     *
+     * @param Id_groupe the id groupe
+     * @return the array list
+     */
+/* @Override
     public void find(String key_word) {
 
     }*/
@@ -79,6 +96,12 @@ public class Seance_Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Delete.
+     *
+     * @param seance the seance
+     */
     public void delete(Seance_Groupe seance) {
         try {
             String query = "DELETE FROM seance_groupe WHERE id = ";
@@ -91,6 +114,12 @@ public class Seance_Groupe_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Create.
+     *
+     * @param seance the seance
+     */
     public void create(Seance_Groupe seance){
         try {
             String query = "INSERT INTO seance_groupe (ID_SEANCE, ID_GROUPE) VALUES('"+seance.getId_Seance()+"', '"+seance.getId_Groupe()+"')";
@@ -103,6 +132,12 @@ public class Seance_Groupe_DAO extends DAO {
         }
     }
 
+    /**
+     * Update seance groupe.
+     *
+     * @param c the c
+     * @return the seance groupe
+     */
     public Seance_Groupe update(Seance_Groupe c) {
         try {
 

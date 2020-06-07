@@ -4,13 +4,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+/**
+ * The type Dao utilisateur.
+ */
 public class DAO_Utilisateur extends DAO {
     private List<Utilisateur> List_User;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Dao utilisateur.
+     */
     public DAO_Utilisateur() {
 
         try{
@@ -25,8 +30,22 @@ public class DAO_Utilisateur extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list user.
+     *
+     * @return the list user
+     */
     public List<Utilisateur> getList_User() {
         return List_User;
+    }
+
+    public List<Utilisateur> findq(String nom , String prenom ){
+        List<Utilisateur> utilisateur = new ArrayList<>();
+        for (Utilisateur i:List_User) {
+            if (i.getNom().equals(nom) && i.getPrenom().equals(prenom))
+                utilisateur.add(i);
+        }
+        return utilisateur;
     }
 
     @Override
@@ -37,6 +56,15 @@ public class DAO_Utilisateur extends DAO {
         }
         return s;
     }
+
+    /**
+     * Find utilisateur.
+     *
+     * @param categorie the categorie
+     * @param key_Word  the key word
+     * @return the utilisateur
+     * @throws NullPointerException the null pointer exception
+     */
     public Utilisateur find(String categorie, String key_Word) throws NullPointerException {
         switch (categorie)
         {
@@ -63,6 +91,13 @@ public class DAO_Utilisateur extends DAO {
         }
         return null;
     }
+
+    /**
+     * Find id utilisateur.
+     *
+     * @param utilisateur the utilisateur
+     * @return the utilisateur
+     */
     public Utilisateur findId(int utilisateur){
 
         for(Utilisateur i: List_User)
@@ -74,6 +109,13 @@ public class DAO_Utilisateur extends DAO {
         }
         return null;
     }
+
+    /**
+     * Getname string.
+     *
+     * @param Id_users the id users
+     * @return the string
+     */
     public String getname(int Id_users){
         for (Utilisateur u: List_User) {
 
@@ -108,6 +150,11 @@ public class DAO_Utilisateur extends DAO {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param user the user
+     */
     public void delete(Utilisateur user) {
         try {
             String query = "DELETE FROM utilisateur WHERE id = ";
@@ -121,6 +168,12 @@ public class DAO_Utilisateur extends DAO {
         }
     }
 
+    /**
+     * Update utilisateur.
+     *
+     * @param user the user
+     * @return the utilisateur
+     */
     public Utilisateur update(Utilisateur user) {
         try {
             System.out.println(user.getNom());
@@ -142,6 +195,12 @@ public class DAO_Utilisateur extends DAO {
         return user;
     }
 
+    /**
+     * Create utilisateur.
+     *
+     * @param user the user
+     * @return the utilisateur
+     */
     public Utilisateur create(Utilisateur user) {
         try {
             System.out.println(user.getNom());
@@ -159,6 +218,11 @@ public class DAO_Utilisateur extends DAO {
         return user;
     }
 
+    /**
+     * Get last id int.
+     *
+     * @return the int
+     */
     public int getLastID(){
         int i = 0 ;
         for (Utilisateur a :List_User) {
@@ -170,7 +234,11 @@ public class DAO_Utilisateur extends DAO {
     }
 
 
-
+    /**
+     * Ajout.
+     *
+     * @param nouv the nouv
+     */
     public void ajout(Utilisateur nouv)
     {
         List_User.add(nouv);

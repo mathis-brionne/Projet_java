@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Promotion dao.
+ */
 public class Promotion_DAO extends DAO {
     private List<Promotion> List_Promo;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Promotion dao.
+     */
     public Promotion_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -22,11 +28,22 @@ public class Promotion_DAO extends DAO {
         this.setData();
     }
 
+    /**
+     * Gets list promo.
+     *
+     * @return the list promo
+     */
     public List<Promotion> getList_Promo() {
         return List_Promo;
     }
 
-    /* @Override
+    /**
+     * Getsp id int.
+     *
+     * @param Nom the nom
+     * @return the int
+     */
+/* @Override
      public void find(String key_word) {
 
      }*/
@@ -45,6 +62,12 @@ public class Promotion_DAO extends DAO {
         return s;
     }
 
+    /**
+     * Find promotion.
+     *
+     * @param id the id
+     * @return the promotion
+     */
     public Promotion find(int id){
         for(Promotion c : List_Promo){
             if(c.getId_Promotion() == id){
@@ -54,6 +77,12 @@ public class Promotion_DAO extends DAO {
         return null;
     }
 
+    /**
+     * Find 2 promotion.
+     *
+     * @param nom the nom
+     * @return the promotion
+     */
     public Promotion find2(String nom ){
         for(Promotion c : List_Promo){
             if(c.getNom() == nom){
@@ -83,6 +112,12 @@ public class Promotion_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Delete.
+     *
+     * @param user the user
+     */
     public void delete(Promotion user) {
         try {
             String query = "DELETE FROM promotion WHERE id = ";
