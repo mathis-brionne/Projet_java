@@ -115,10 +115,19 @@ public class Cours_DAO extends DAO {
         return c;
     }
 
-    public Cours create(Cours c) {
+    public int getLastID(){
+        int i = 0 ;
+        for (Cours a :List_Course) {
+            if (a.getId_Cours()>i){
+                i = a.getId_Cours();
+            }
+        }
+        return i + 1;
+    }
+
+    public Cours create(Cours user) {
         try {
-            System.out.println(c.getNom());
-            String query = "INSERT INTO cours (NOM) VALUES('"+c.getNom()+"')";
+            String query = "INSERT INTO cours (ID, NOM) VALUES('"+user.getId_Cours()+"', '"+user.getNom() +"')";
 
             System.out.println(query);
             Statement st = Conn.createStatement();
@@ -128,7 +137,7 @@ public class Cours_DAO extends DAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return c;
+        return user;
     }
 
 

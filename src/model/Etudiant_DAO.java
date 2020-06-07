@@ -94,6 +94,21 @@ public class Etudiant_DAO extends DAO {
         }
         return i + 1;
     }
+
+    public Etudiant create(Etudiant user) {
+        try {
+            String query = "INSERT INTO etudiant (ID_UTILISATEUR, NUMERO, ID_GROUPE) VALUES('"+user.getId_Utilisateur()+"', '"+user.getNumero()+"', '"+user.getId_Groupe() +"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
     /*
 //IMPOSSIBLE DE UPDATE
     public Utilisateur update(Utilisateur user) {
