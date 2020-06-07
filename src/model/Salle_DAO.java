@@ -38,7 +38,14 @@ public class Salle_DAO extends DAO {
        }
        return "";
    }
-
+    public int getspId(String nom){
+        for (Salle s : List_Salle){
+            if (s.getNom().equals(nom)){
+                return s.getId_Salle();
+            }
+        }
+        return 0;
+    }
     public Salle find(int id){
         for(Salle c : List_Salle){
             if(c.getId_Salle() == id){

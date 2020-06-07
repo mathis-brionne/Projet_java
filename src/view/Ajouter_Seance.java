@@ -55,12 +55,17 @@ class Ajouter_Seance extends JFrame {
     private String years[]
             = { "2020","2021","2022" };
 
-
+    private String[] salle = new String[new Salle_DAO().getList_Salle().size()];
     public Ajouter_Seance()
     {
         List<Cours> rf = new Cours_DAO().getList_Course();
+        List<Salle> emq = new Salle_DAO().getList_Salle();
         for (int y = 0 ; y < rf.size() ; y++) {
             cours[y] = rf.get(y).getNom();
+        }
+        for (int z = 0 ; z < emq.size();z++)
+        {
+            salle[z] = emq.get(z).getNom();
         }
         for(int i =0 ; i<52;i++)
         {
@@ -163,6 +168,11 @@ class Ajouter_Seance extends JFrame {
         cour.setSize(100, 20);
         cour.setLocation(200, 450);
         c.add(cour);
+        JComboBox Salle = new JComboBox(salle);
+        Salle.setFont(new Font("Arial", Font.PLAIN, 15));
+        Salle.setSize(100, 20);
+        Salle.setLocation(400, 450);
+        c.add(Salle);
         sub = new JButton("Submit");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
@@ -208,26 +218,8 @@ class Ajouter_Seance extends JFrame {
                   a.create(S);
                   Seance_Groupe n = new Seance_Groupe(a.getLastID(),gp.getSelectedIndex()+1);
                   new Seance_Groupe_DAO().create(n);
-
-
-                  //SETTER DE DATE
-
-                  String testpromo= (String)promo.getSelectedItem();
-                  Integer x = Integer.valueOf(testpromo);
-                  System.out.println(x);
-                  //SETTER PROMO
-
-                  String testgroupe= (String)gp.getSelectedItem();
-                  Integer y = Integer.valueOf(testgroupe);
-                  System.out.println(y);
-                  //SETTER DE GROUPE
-
-                  String testsem= (String)sem.getSelectedItem();
-                  Integer z = Integer.valueOf(testsem);
-                  System.out.println(z);
-                  //SETTER DE semaine
-
-
+                  Seance_Salle em = new Seance_Salle(a.getLastID(),new Salle_DAO().getspId((String) Salle.getSelectedItem()));
+                  new Seance_Salle_DAO().create(em);
               }
             }
         });

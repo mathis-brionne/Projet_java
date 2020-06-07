@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +81,17 @@ public class Seance_Salle_DAO extends DAO {
 
             ResultSet rs = st.executeQuery(query+ seance.getId_Salle());
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void create(Seance_Salle S) {
+        try {
+            String query = "INSERT INTO seance_salle (ID_SALLE, ID_SEANCE) VALUES('"+S.getId_Salle() +"', '"+S.getId_Seance()+"')";
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
