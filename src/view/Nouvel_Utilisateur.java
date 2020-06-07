@@ -69,51 +69,51 @@ class Nouvel_Utilisateur extends JFrame {
         c.setLayout(null);
 
         nom = new JLabel("Nom:");
-        nom.setFont(new Font("Arial", Font.PLAIN, 30));
+        nom.setFont(new Font("Arial", Font.PLAIN, 20));
         nom.setSize(300, 30);
-        nom.setLocation(300, 100);
+        nom.setLocation(100, 100);
         c.add(nom);
 
         nom2 = new JTextField();
         nom2.setFont(new Font("Arial", Font.PLAIN, 15));
         nom2.setSize(190, 20);
-        nom2.setLocation(200, 100);
+        nom2.setLocation(250, 100);
         c.add(nom2);
 
         prenom = new JLabel("Prenom:");
-        prenom.setFont(new Font("Arial", Font.PLAIN, 30));
+        prenom.setFont(new Font("Arial", Font.PLAIN, 20));
         prenom.setSize(300, 30);
-        prenom.setLocation(300, 150);
+        prenom.setLocation(100, 150);
         c.add(prenom);
 
         prenom2 = new JTextField();
         prenom2.setFont(new Font("Arial", Font.PLAIN, 15));
         prenom2.setSize(190, 20);
-        prenom2.setLocation(200, 150);
+        prenom2.setLocation(250, 150);
         c.add(prenom2);
 
         email = new JLabel("Email:");
-        email.setFont(new Font("Arial", Font.PLAIN, 30));
+        email.setFont(new Font("Arial", Font.PLAIN, 20));
         email.setSize(300, 30);
-        email.setLocation(300, 200);
+        email.setLocation(100, 200);
         c.add(email);
 
         email2 = new JTextField();
         email2.setFont(new Font("Arial", Font.PLAIN, 15));
         email2.setSize(190, 20);
-        email2.setLocation(200, 200);
+        email2.setLocation(250, 200);
         c.add(email2);
 
         pass = new JLabel("Password:");
-        pass.setFont(new Font("Arial", Font.PLAIN, 30));
+        pass.setFont(new Font("Arial", Font.PLAIN, 20));
         pass.setSize(300, 30);
-        pass.setLocation(300, 250);
+        pass.setLocation(100, 250);
         c.add(pass);
 
         pass2 = new JTextField();
         pass2.setFont(new Font("Arial", Font.PLAIN, 15));
         pass2.setSize(190, 20);
-        pass2.setLocation(200, 250);
+        pass2.setLocation(250, 250);
         c.add(pass2);
 
         dob = new JLabel("Type");
@@ -125,7 +125,7 @@ class Nouvel_Utilisateur extends JFrame {
         date = new JComboBox(dates);
         date.setFont(new Font("Arial", Font.PLAIN, 15));
         date.setSize(100, 20);
-        date.setLocation(200, 300);
+        date.setLocation(250, 300);
         c.add(date);
 
         sub = new JButton("Suivant");
