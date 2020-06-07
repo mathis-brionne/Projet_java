@@ -105,7 +105,9 @@ public class recherche extends JFrame {
                           planning p = new planning(E.getPlannig().getSeances() , 21);
                       }
                   }
+                  dispose();
               }
+
           }
         });
         add(button);

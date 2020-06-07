@@ -58,11 +58,14 @@ public class Panneau extends JPanel {
                     planning p ;
                     if (passwordText.getText().equals(U.getPassword())){
                         switch (U.getDroit()){
-                            case 1 : break;
-                            case 2 : break;
+                            case 1 : Menu_Admin m= new Menu_Admin();
+                                break;
+
+                            case 2 : Menu_Respo r= new Menu_Respo();
+                                break;
                             case 3 :
                                 Prof P = new Prof(U);
-                                p = new  planning(P.getPlannig().getSeances(), 21);
+                                p = new  planning(P.getPlannig().getSeances(),21);
                                 break;
                             case 4 :
                                 Eleve E = new Eleve(U);

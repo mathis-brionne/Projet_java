@@ -47,10 +47,7 @@ class Menu_Respo extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == sub) {
                     Ajouter_Seance a =new Ajouter_Seance();
-
                 }
-
-
             }
         });
 
@@ -84,7 +81,7 @@ class Menu_Respo extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == sub3) {
-                    //Rajouter la recherche
+                    recherche r = new recherche();
 
                 }
 
