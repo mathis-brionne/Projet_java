@@ -41,7 +41,7 @@ public class Seance_DAO extends DAO{
                 return i;
             }
         }
-
+      return null;
     }
     public int getLastID(){
         int i = 0 ;

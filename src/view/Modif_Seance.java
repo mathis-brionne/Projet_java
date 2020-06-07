@@ -234,7 +234,7 @@ class Modif_Seance extends JFrame {
                             break;
                     }
                     Seance_DAO a = new Seance_DAO();
-                    Seance S = new Seance(x,(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1,"","",""  );
+                    Seance S = new Seance(x,(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1  );
                     a.update(S);
                     Seance_Groupe n = new Seance_Groupe(x,gp.getSelectedIndex()+1);
                     new Seance_Groupe_DAO().update(n);

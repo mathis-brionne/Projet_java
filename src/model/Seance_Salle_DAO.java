@@ -101,7 +101,7 @@ public class Seance_Salle_DAO extends DAO {
         try {
 
             String query =     "UPDATE seance_salle SET ID_SALLE = '" + c.getId_Salle() + "'"+
-                    " WHERE ID = " + c.getId_Seance();
+                    " WHERE ID_SEANCE = " + c.getId_Seance();
             System.out.println(query);
             Statement st = Conn.createStatement();
 
