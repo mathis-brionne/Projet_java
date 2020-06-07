@@ -68,7 +68,7 @@ public class Seance_Enseignant_DAO extends DAO {
      */
     public int find(int Id_Seance){
         for (Seance_Enseignant a :List_Seance_Enseignant) {
-            if (a.getId_Enseignant() == Id_Seance){
+            if (a.getId_Seance() == Id_Seance){
                 return a.getId_Enseignant();
             }
         }
