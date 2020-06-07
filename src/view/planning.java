@@ -53,14 +53,23 @@ public class planning extends JFrame {
         {
             semaine[i]= String.valueOf(i+1);
         }
+        Container c;
+        c = getContentPane();
+        c.setLayout(null);
+        JLabel semac = new JLabel(String.format("Semaine %d",Semaine));
+        semac.setSize(100,20);
+        semac.setFont(new Font("Arial", Font.PLAIN, 15));
+        semac.setLocation(420,0);
+
         JComboBox sem = new JComboBox(semaine);
+
         sem.setFont(new Font("Arial", Font.PLAIN, 15));
         sem.setSize(100, 20);
-        sem.setLocation(200, 300);
+        sem.setLocation(400, 400);
         JButton sub = new JButton("Submit");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
-        sub.setLocation(150, 350);
+        sub.setLocation(300, 450);
         sub.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -73,11 +82,9 @@ public class planning extends JFrame {
                 }
             }
         });
-        JPanel frame2 = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel panelHaut = new JPanel();
-        JPanel frame = new JPanel();
-        setSize(1000, 800);
+        c.add(semac);
+        setSize(900, 700);
         model = new ModeleStatique(seances, Semaine);
 
         table = new JTable(model);
@@ -86,24 +93,21 @@ public class planning extends JFrame {
         table.setDefaultRenderer(Seance.class, new ColorCellRenderer());
 
         table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setLocation(0,20);
+        table.setSize(900,600);
 
         table.setDefaultRenderer(String.class, new ColorCellRenderer());
 
-        JLabel name = new JLabel("Semaine");
+        JLabel name = new JLabel("Changer de Semaine");
         name.setFont(new Font("Arial", Font.PLAIN, 20));
-        name.setSize(100, 20);
-        name.setLocation(100, 100);
-        frame2.add(name);
+        name.setSize(200, 20);
+        name.setLocation(200, 400);
+        c.add(name);
 
 
-        frame2.add(sub);
-        frame2.add(sem);
-        frame.add(frame2, BorderLayout.NORTH);
-        frame.add(new JScrollPane(table), BorderLayout.CENTER);
-        add(frame);
-
-        frame2.setVisible(true);
-        frame.setVisible(true);
+        c.add(sub);
+        c.add(sem);
+        c.add(table);
         setVisible(true);
 
     }
@@ -273,8 +277,11 @@ public class planning extends JFrame {
 
                     if (((Seance)value).getId_Seance() != 0) {
                         //((JLabel) c).setText(); = new JTextArea( s.getCours()+"\n" +s.getProf() +"\n"+s.getSalle());
+
+                        ((JLabel) c).setForeground(new Color(130,130,130));
                         ((JLabel) c).setText("<html>"+((Seance)value).getCours()+"<br>"+ ((Seance)value).getProf()+"<br>"+((Seance)value).getSalle()+"</html>");
                         Color color = new Color(((Seance)value).getId_Seance()*70%255, ((Seance)value).getId_Seance()*120%255, ((Seance)value).getId_Seance()*26%255);
+
                         c.setBackground(color);
                     } else {
                         ((JLabel) c).setText("");
