@@ -102,6 +102,22 @@ public class Enseignant_DAO extends DAO {
         }
         return i + 1;
     }
+
+    public Enseignant create(Enseignant user) {
+        try {
+            String query = "INSERT INTO ensignant (ID_UTILISATEUR, ID_COURS) VALUES('"+user.getId_Utilisateur()+"', '"+user.getId_cours() +"')";
+
+            System.out.println(query);
+            Statement st = Conn.createStatement();
+
+            ResultSet rs = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
+
     /*
     //PAS BESOIN DE UPDATE VU QUE C'EST QUE DES ID
 

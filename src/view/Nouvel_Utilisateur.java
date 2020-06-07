@@ -1,10 +1,22 @@
-/*package view;
+package view;
 
 import model.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import model.*;
+import model.Utilisateur;
+import model.DAO_Utilisateur;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.security.acl.Group;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -135,79 +147,34 @@ class Nouvel_Utilisateur extends JFrame {
 
                     //String q =new String();
                     switch ((String) date.getSelectedItem()){
-                        case "Etudiant" : droit=0;
+                        case "Etudiant" : droit=4;
                             break;
-                        case "Enseignant" :droit=1;
+                        case "Enseignant" :droit=3;
                             break;
                         default:
                             throw new IllegalStateException("Unexpected value: " + (String) date.getSelectedItem());
                     }
-                    int id= users.getLastId();
+
 
 
                     // SETTER NOM DU COURS
                     //
                     DAO_Utilisateur users = new DAO_Utilisateur();
+                    int id= users.getLastID();
                     Utilisateur u= new Utilisateur(id,droit,o, m,n,p);
+                    u = users.create(u);
 
-                    if(droit==1)
+                    if(droit==4)
                     {
-                        promotion = new JLabel("Promotion");
-                        promotion.setFont(new Font("Arial", Font.PLAIN, 20));
-                        promotion.setSize(100, 20);
-                        promotion.setLocation(300, 100);
-                        c.add(promotion);
-
-                        promo = new JComboBox(promos);
-                        promo.setFont(new Font("Arial", Font.PLAIN, 15));
-                        promo.setSize(100, 20);
-                        promo.setLocation(300, 100);
-                        c.add(promo);
-
-                        groupe = new JLabel("Groupe");
-                        groupe.setFont(new Font("Arial", Font.PLAIN, 20));
-                        groupe.setSize(100, 20);
-                        groupe.setLocation(300, 150);
-                        c.add(groupe);
-
-                        gp = new JComboBox(groupes);
-                        gp.setFont(new Font("Arial", Font.PLAIN, 15));
-                        gp.setSize(100, 20);
-                        gp.setLocation(300, 150);
-                        c.add(gp);
-
-
-
-                        Promotion_DAO promos= new Promotion_DAO();
-                        Promotion pro= new Promotion();
-                        pro=promos.find2(promo.getSelectedItem());
-
-                        Groupe_DAO groupes= new Groupe_DAO();
-                        Groupe g=new Groupe();
-                        g=groupes.find2(pro.getId());
-
-                        Etudiant_DAO etudiants= new Etudiant_DAO();
-                        Etudiant etu= new Etudiant(etudiants.getLastID(), 0, g.getId());
-
+                        Nouvel_Etudiant etudiant = new Nouvel_Etudiant(u);
+                        dispose();
 
                     }
                     else
                     {
-                        cours = new JLabel("Nom du cours:");
-                        cours.setFont(new Font("Arial", Font.PLAIN, 30));
-                        cours.setSize(300, 30);
-                        cours.setLocation(300, 100);
-                        c.add(cours);
+                        Nouveau_Prof prof = new Nouveau_Prof(u);
+                        dispose();
 
-                        cours2 = new JTextField();
-                        cours2.setFont(new Font("Arial", Font.PLAIN, 15));
-                        cours2.setSize(190, 20);
-                        cours2.setLocation(300, 100);
-                        c.add(cours2);
-
-                        String r = cours2.getText();
-                        Enseignant_DAO enseignants = new Enseignant_DAO();
-                        Enseignant e = new Enseignant(id,r);
                     }
 
                 }
@@ -227,8 +194,10 @@ class Nouvel_Utilisateur extends JFrame {
 
 
 
+
     public static void main(String[] args) throws Exception
     {
         Nouvel_Utilisateur f = new Nouvel_Utilisateur();
     }
-}*/
+
+}
