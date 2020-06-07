@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Supprimet_séance {
+public class Supprimet_séance extends JFrame {
     // Components of the Form
     private Container c;
     private JLabel title;

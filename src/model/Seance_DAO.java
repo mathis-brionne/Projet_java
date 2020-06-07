@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Seance dao.
+ */
 public class Seance_DAO extends DAO{
 
     private List<Seance> List_Seance;
     private Connection Conn = null;
 
+    /**
+     * Instantiates a new Seance dao.
+     */
     public Seance_DAO() {
         try{
             Conn = DaoFactory.getInstance().getConnection();
@@ -23,6 +29,16 @@ public class Seance_DAO extends DAO{
         List_Seance = new ArrayList<Seance>();
         this.setData();
     }
+
+    /**
+     * Finds seance.
+     *
+     * @param semaine   the semaine
+     * @param jours     the jours
+     * @param crenaux   the crenaux
+     * @param Id_seance the id seance
+     * @return the seance
+     */
     public Seance finds(int semaine , int jours,int crenaux  , int Id_seance){
         Seance result = new Seance() ;
         for (Seance l: List_Seance) {
@@ -33,16 +49,29 @@ public class Seance_DAO extends DAO{
 
     }
 
+    /**
+     * Find 2 seance.
+     *
+     * @param a the a
+     * @return the seance
+     */
     public Seance find2(int a){
         int A = - 1 ;
+        Seance s = new Seance();
         for (Seance i: List_Seance) {
 
             if(a ==i.getId_Seance()){
                 return i;
             }
         }
-
+        return s;
     }
+
+    /**
+     * Get last id int.
+     *
+     * @return the int
+     */
     public int getLastID(){
         int i = 0 ;
         for (Seance a :List_Seance) {
@@ -53,6 +82,11 @@ public class Seance_DAO extends DAO{
         return i + 1;
     }
 
+    /**
+     * Gets list seance.
+     *
+     * @return the list seance
+     */
     public List<Seance> getList_Seance() {
         return List_Seance;
     }
@@ -79,6 +113,12 @@ public class Seance_DAO extends DAO{
         return s;
     }
 
+    /**
+     * Find seance.
+     *
+     * @param id the id
+     * @return the seance
+     */
     public Seance find(int id){
         for(Seance c : List_Seance){
             if(c.getId_Seance() == id){
@@ -136,6 +176,11 @@ public class Seance_DAO extends DAO{
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param seance the seance
+     */
     public void delete(Seance seance) {
         try {
             String query = "DELETE FROM seance WHERE id = ";
@@ -149,6 +194,12 @@ public class Seance_DAO extends DAO{
         }
     }
 
+    /**
+     * Update seance.
+     *
+     * @param user the user
+     * @return the seance
+     */
     public Seance update(Seance user) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -168,6 +219,12 @@ public class Seance_DAO extends DAO{
         }
         return user;
     }
+
+    /**
+     * Add.
+     *
+     * @param user the user
+     */
     public void add(Seance user) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -182,6 +239,11 @@ public class Seance_DAO extends DAO{
     }
 
 
+    /**
+     * Create.
+     *
+     * @param S the s
+     */
     public void create(Seance S) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -196,6 +258,11 @@ public class Seance_DAO extends DAO{
     }
 
 
+    /**
+     * Ajout.
+     *
+     * @param S the s
+     */
     public void ajout(Seance S)
     {
         List_Seance.add(S);

@@ -1,4 +1,4 @@
-package view;
+/*package view;
 
 import model.*;
 
@@ -147,7 +147,7 @@ class Nouvel_Utilisateur extends JFrame {
 
                     // SETTER NOM DU COURS
                     //
-                    Utilisateur_Dao users = new Utilisateur_DAO();
+                    DAO_Utilisateur users = new DAO_Utilisateur();
                     Utilisateur u= new Utilisateur(id,droit,o, m,n,p);
 
                     if(droit==1)
@@ -208,10 +208,6 @@ class Nouvel_Utilisateur extends JFrame {
                         String r = cours2.getText();
                         Enseignant_DAO enseignants = new Enseignant_DAO();
                         Enseignant e = new Enseignant(id,r);
-
-
-
-
                     }
 
                 }
@@ -235,4 +231,4 @@ class Nouvel_Utilisateur extends JFrame {
     {
         Nouvel_Utilisateur f = new Nouvel_Utilisateur();
     }
-}
+}*/
