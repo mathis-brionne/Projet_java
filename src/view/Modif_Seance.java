@@ -73,7 +73,7 @@ class Modif_Seance extends JFrame {
         {
             semaines[i]= String.valueOf(i+1);
         }
-        setTitle("Ajouter une nouvelle séance");
+        setTitle("Modifier une séance");
         setBounds(300, 90, 900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
