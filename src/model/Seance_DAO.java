@@ -32,6 +32,17 @@ public class Seance_DAO extends DAO{
         }        return result;
 
     }
+
+    public Seance find2(int a){
+        int A = - 1 ;
+        for (Seance i: List_Seance) {
+
+            if(a ==i.getId_Seance()){
+                return i;
+            }
+        }
+
+    }
     public int getLastID(){
         int i = 0 ;
         for (Seance a :List_Seance) {
