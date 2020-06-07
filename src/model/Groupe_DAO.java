@@ -40,6 +40,14 @@ public class Groupe_DAO extends DAO {
         }
         return null;
     }
+    public Groupe find2(int id){
+        for(Groupe c : List_Group){
+            if(c.getId_Promotion() == id){
+                return  c;
+            }
+        }
+        return null;
+    }
 
     @Override
     public String toString()throws NullPointerException {

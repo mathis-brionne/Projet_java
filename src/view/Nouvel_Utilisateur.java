@@ -21,6 +21,8 @@ class Nouvel_Utilisateur extends JFrame {
     private JTextField prenom2;
     private JLabel email;
     private JTextField email2;
+    private JLabel cours;
+    private JTextField cours2;
     private JLabel pass;
     private JTextField pass2;
     private JLabel dob;
@@ -131,19 +133,22 @@ class Nouvel_Utilisateur extends JFrame {
 
                     int droit;
 
-                    String q =new String();
+                    //String q =new String();
                     switch ((String) date.getSelectedItem()){
                         case "Etudiant" : droit=0;
                             break;
                         case "Enseignant" :droit=1;
                             break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + (String) date.getSelectedItem());
                     }
+                    int id= users.getLastId();
 
 
                     // SETTER NOM DU COURS
                     //
                     Utilisateur_Dao users = new Utilisateur_DAO();
-                    Utilisateur u= new Utilisateur(users.getLastId(),droit,o, m,n,p);
+                    Utilisateur u= new Utilisateur(id,droit,o, m,n,p);
 
                     if(droit==1)
                     {
@@ -171,6 +176,20 @@ class Nouvel_Utilisateur extends JFrame {
                         gp.setLocation(300, 150);
                         c.add(gp);
 
+
+
+                        Promotion_DAO promos= new Promotion_DAO();
+                        Promotion pro= new Promotion();
+                        pro=promos.find2(promo.getSelectedItem());
+
+                        Groupe_DAO groupes= new Groupe_DAO();
+                        Groupe g=new Groupe();
+                        g=groupes.find2(pro.getId());
+
+                        Etudiant_DAO etudiants= new Etudiant_DAO();
+                        Etudiant etu= new Etudiant(etudiants.getLastID(), 0, g.getId());
+
+
                     }
                     else
                     {
@@ -186,18 +205,15 @@ class Nouvel_Utilisateur extends JFrame {
                         cours2.setLocation(300, 100);
                         c.add(cours2);
 
+                        String r = cours2.getText();
+                        Enseignant_DAO enseignants = new Enseignant_DAO();
+                        Enseignant e = new Enseignant(id,r);
+
+
+
+
                     }
 
-                    /*
-                    Seance_DAO a = new Seance_DAO();
-                    Seance S = new Seance(a.getLastID(),(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1,"","",""  );
-                    a.create(S);
-                    Seance_Groupe n = new Seance_Groupe(a.getLastID(),gp.getSelectedIndex()+1);
-                    new Seance_Groupe_DAO().create(n);
-                    Seance_Salle em = new Seance_Salle(a.getLastID(),new Salle_DAO().getspId((String) Salle.getSelectedItem()));
-                    new Seance_Salle_DAO().create(em);
-                    
-                     */
                 }
             }
         });

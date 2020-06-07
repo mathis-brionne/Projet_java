@@ -84,6 +84,16 @@ public class Etudiant_DAO extends DAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public int getLastID(){
+        int i = 0 ;
+        for (Etudiant a :List_Etudiant) {
+            if (a.getId_Utilisateur()>i){
+                i = a.getId_Utilisateur();
+            }
+        }
+        return i + 1;
+    }
     /*
 //IMPOSSIBLE DE UPDATE
     public Utilisateur update(Utilisateur user) {
