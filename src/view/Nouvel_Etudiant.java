@@ -100,6 +100,7 @@ class Nouvel_Etudiant extends JFrame {
                     Etudiant_DAO etudiants= new Etudiant_DAO();
                     Etudiant etu= new Etudiant(u.getId(), 0 , IDG);
                     etu = etudiants.create(etu);
+                    dispose();
 
                 }
             }

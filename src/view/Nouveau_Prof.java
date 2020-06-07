@@ -82,6 +82,8 @@ class Nouveau_Prof extends JFrame {
 
                     ens = enseignants.create(ens);
 
+                    dispose();
+
                 }
 
             }

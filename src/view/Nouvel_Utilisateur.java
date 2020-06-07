@@ -167,11 +167,13 @@ class Nouvel_Utilisateur extends JFrame {
                     if(droit==4)
                     {
                         Nouvel_Etudiant etudiant = new Nouvel_Etudiant(u);
+                        dispose();
 
                     }
                     else
                     {
                         Nouveau_Prof prof = new Nouveau_Prof(u);
+                        dispose();
 
                     }
 
