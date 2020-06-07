@@ -57,10 +57,20 @@ public class DAO_Utilisateur extends DAO {
                         return i;
                     }
                 }
-                break;
             default:
                 System.out.println("");
                 break;
+        }
+        return null;
+    }
+    public Utilisateur findId(int utilisateur){
+
+        for(Utilisateur i: List_User)
+        {
+            if(i.getId() == utilisateur)
+            {
+                return i;
+            }
         }
         return null;
     }

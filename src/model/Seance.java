@@ -26,7 +26,7 @@ public class Seance extends Object {
   private String Prof ="";
   private String salle = "";
   private String Cours = "";
-  public Seance(int id_seance, int semaine ,Date date, int creaneau, String heure_debut, String heure_fin, int etat, int id_cours , int id_type , String salle , String cours, String Prof ) {
+  public Seance(int id_seance, int semaine ,Date date, int creaneau, String heure_debut, String heure_fin, int etat, int id_cours , int id_type) {
     this.id_seance = id_seance;
     this.semaine=semaine;
     this.date=date;
@@ -36,9 +36,11 @@ public class Seance extends Object {
     this.id_cours=id_cours;
     this.id_type=id_type;
     this.creaneau = creaneau ;
-    this.Prof=Prof;
-    this.salle = salle;
-    this.Cours = cours;
+  }
+  public void setAfffichage(){
+    this.Cours = new Cours_DAO().find(id_cours);
+    this.salle = new Salle_DAO().finds(new Seance_Salle_DAO().find(id_seance));
+    this.Prof = new DAO_Utilisateur().getname(new Seance_Enseignant_DAO().find(id_seance));
   }
   public Seance(){}
     public int getCreaneau() {

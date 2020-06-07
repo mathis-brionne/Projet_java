@@ -115,11 +115,7 @@ public class Seance_DAO extends DAO{
                 int etat = rs.getInt("ETAT");
                 int id_cours = rs.getInt("ID_COURS");
                 int id_type = rs.getInt("ID_TYPE");
-                int Id_salle = new Seance_Salle_DAO().find(id_seance);
-                String cours = new Cours_DAO().find(id_cours);
-                String salle = new Salle_DAO().finds(Id_salle);
-                String Prof = new DAO_Utilisateur().getname(new Seance_Enseignant_DAO().find(id_seance));
-                Seance S = new Seance(id_seance, semaine,date,a , heure_debut, heure_fin, etat, id_cours, id_type,  salle ,  cours , Prof );
+                Seance S = new Seance(id_seance, semaine,date,a , heure_debut, heure_fin, etat, id_cours, id_type);
                 List_Seance.add(S);
             }
             st.close();

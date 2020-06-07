@@ -21,6 +21,7 @@ public class Planning {
                     {
                         Seances[i][j][y] = seance_dao.finds(i, j ,y, Id_seance.get(z));
                         if (Seances[i][j][y].getId_Seance()!=0){
+                            Seances[i][j][y].setAfffichage();
                             break;
                         }
                     }

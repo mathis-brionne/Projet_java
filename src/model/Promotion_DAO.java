@@ -30,6 +30,12 @@ public class Promotion_DAO extends DAO {
      public void find(String key_word) {
 
      }*/
+    public int getspID(String Nom){
+        for (Promotion a : List_Promo) {
+            return  a.getId_Promotion();
+        }
+        return 0;
+    }
     @Override
     public String toString()throws NullPointerException {
         String s =null;

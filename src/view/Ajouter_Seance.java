@@ -5,6 +5,7 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.security.acl.Group;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,15 +32,15 @@ class Ajouter_Seance extends JFrame {
     private JComboBox heure ;
     private JComboBox type_cour ;
     private JComboBox cour;
+    private JComboBox profcb;
     private JLabel res;
 
     String[] heures = {"08:30:00","10:15:00","12:00:00","13:45:00","15:30:00","17:15:00","19:00:00"};
     String[] type_cours = {"Cours","TD","TD","Examen" };
     String[] promos = {"2020", "2021", "2022", "2023", "2024"};
-    String[] groupes = {"1", "2", "3", "4", "5", "6", "7","8","9","10","11","12"};
+    String[] groupes = {"TD1", "TD2", "TD3", "TD4", "TD5", "TD6", "TD7","TD8","TD9","TD10","TD11","TD12"};
     private String[] cours = new String[ new Cours_DAO().getList_Course().size()];
     String[] semaines = new String[52];
-
     private String dates[]
             = { "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
@@ -56,10 +57,12 @@ class Ajouter_Seance extends JFrame {
             = { "2020","2021","2022" };
 
     private String[] salle = new String[new Salle_DAO().getList_Salle().size()];
+    private String[] profs = new String[new Enseignant_DAO().getList_Enseignant().size()];
     public Ajouter_Seance()
     {
         List<Cours> rf = new Cours_DAO().getList_Course();
         List<Salle> emq = new Salle_DAO().getList_Salle();
+        List<Enseignant> prof = new Enseignant_DAO().getList_Enseignant();
         for (int y = 0 ; y < rf.size() ; y++) {
             cours[y] = rf.get(y).getNom();
         }
@@ -70,6 +73,9 @@ class Ajouter_Seance extends JFrame {
         for(int i =0 ; i<52;i++)
         {
             semaines[i]= String.valueOf(i+1);
+        }
+        for (int p = 0 ; p < prof.size(); p++){
+            profs[p] = new DAO_Utilisateur().findId(new Enseignant_DAO().getList_Enseignant().get(p).getId_Utilisateur()).getNom() ;
         }
         setTitle("Ajouter une nouvelle séance");
         setBounds(300, 90, 900, 600);
@@ -85,11 +91,7 @@ class Ajouter_Seance extends JFrame {
         title.setLocation(300, 30);
         c.add(title);
 
-        tname = new JTextField();
-        tname.setFont(new Font("Arial", Font.PLAIN, 15));
-        tname.setSize(190, 20);
-        tname.setLocation(200, 100);
-        c.add(tname);
+
 
         dob = new JLabel("Date");
         dob.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -173,64 +175,71 @@ class Ajouter_Seance extends JFrame {
         Salle.setSize(100, 20);
         Salle.setLocation(400, 450);
         c.add(Salle);
+
+        profcb = new JComboBox(profs);
+        profcb.setFont(new Font("Arial", Font.PLAIN, 15));
+        profcb.setSize(100, 20);
+        profcb.setLocation(500, 450);
+        c.add(profcb);
         sub = new JButton("Submit");
         sub.setFont(new Font("Arial", Font.PLAIN, 15));
         sub.setSize(100, 20);
         sub.setLocation(150, 500);
+
+
         sub.addActionListener(new ActionListener() {
-          @Override
+            @Override
             public void actionPerformed(ActionEvent e) {
-              if (e.getSource() == sub) {
+                if (e.getSource() == sub) {
+                    // SETTER NOM DU COURS
+                    //
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-
-                  String test = tname.getText();
-                  System.out.println(test);
-                  // SETTER NOM DU COURS
-           //
-                  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-                  String dateString = (String)year.getSelectedItem()+"-"+(String)month.getSelectedItem()+"-"+(String)date.getSelectedItem();
-                  Date   date = new Date();
-                  try {
-                           date = format.parse ( dateString );
-                  } catch (ParseException ex) {
-                      ex.printStackTrace();
-                  }
-                  String Heure_fin =new String();
-                  switch ((String) heure.getSelectedItem()){
-                      case "08:30:00" : Heure_fin = "10:00:00";
-                          break;
-                      case "10:15:00" : Heure_fin= "11:45:00";
-                          break;
-                      case "12:00:00" : Heure_fin= "13:30:00";
-                          break;
-                      case "13:45:00" : Heure_fin= "15:15:00";
-                          break;
-                      case "15:30:00" : Heure_fin= "17:00:00";
-                          break;
-                      case "17:15:00" : Heure_fin= "18:45:00";
-                          break;
-                      case "19:00:00" : Heure_fin= "20:30:00";
-                          break;
-                  }
-                  Seance_DAO a = new Seance_DAO();
-                  Seance S = new Seance(a.getLastID(),(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1,"","",""  );
-                  a.create(S);
-                  Seance_Groupe n = new Seance_Groupe(a.getLastID(),gp.getSelectedIndex()+1);
-                  new Seance_Groupe_DAO().create(n);
-                  Seance_Salle em = new Seance_Salle(a.getLastID(),new Salle_DAO().getspId((String) Salle.getSelectedItem()));
-                  new Seance_Salle_DAO().create(em);
-              }
+                    String dateString = (String)year.getSelectedItem()+"-"+(String)month.getSelectedItem()+"-"+(String)date.getSelectedItem();
+                    Date   date = new Date();
+                    try {
+                        date = format.parse ( dateString );
+                    } catch (ParseException ex) {
+                        ex.printStackTrace();
+                    }
+                    String Heure_fin =new String();
+                    switch ((String) heure.getSelectedItem()){
+                        case "08:30:00" : Heure_fin = "10:00:00";
+                            break;
+                        case "10:15:00" : Heure_fin= "11:45:00";
+                            break;
+                        case "12:00:00" : Heure_fin= "13:30:00";
+                            break;
+                        case "13:45:00" : Heure_fin= "15:15:00";
+                            break;
+                        case "15:30:00" : Heure_fin= "17:00:00";
+                            break;
+                        case "17:15:00" : Heure_fin= "18:45:00";
+                            break;
+                        case "19:00:00" : Heure_fin= "20:30:00";
+                            break;
+                    }
+                    Seance_DAO a = new Seance_DAO();
+                    Seance S = new Seance(a.getLastID(),(int)sem.getSelectedIndex()+1,date,0,(String)heure.getSelectedItem(),Heure_fin,0,new Cours_DAO().getspId((String) cour.getSelectedItem()), type_cour.getSelectedIndex() +1  );
+                    a.create(S);
+                    int IDG = new Groupe_DAO().getspId(new Promotion_DAO().getspID((String)promo.getSelectedItem()),(String) gp.getSelectedItem());
+                    System.out.println(new Promotion_DAO().getspID((String)promo.getSelectedItem()));
+                    System.out.println((String) gp.getSelectedItem());
+                    Seance_Groupe n = new Seance_Groupe(a.getLastID(),IDG);
+                    new Seance_Groupe_DAO().create(n);
+                    Seance_Salle em = new Seance_Salle(a.getLastID(),new Salle_DAO().getspId((String) Salle.getSelectedItem()));
+                    new Seance_Salle_DAO().create(em);
+                    Seance_Enseignant Ses = new Seance_Enseignant(a.getLastID(),new DAO_Utilisateur().find("nom",(String) profcb.getSelectedItem()).getId());
+                    new Seance_Enseignant_DAO().create(Ses);
+                }
             }
         });
-                c.add(sub);
-
+        c.add(sub);
         res = new JLabel("");
         res.setFont(new Font("Arial", Font.PLAIN, 20));
         res.setSize(500, 25);
         res.setLocation(100, 500);
         c.add(res);
-
 
         setVisible(true);
     }

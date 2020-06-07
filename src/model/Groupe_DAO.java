@@ -40,6 +40,14 @@ public class Groupe_DAO extends DAO {
         }
         return null;
     }
+    public int getspId(int Id , String name){
+        for(Groupe c : List_Group){
+            if(c.getId_Promotion() == Id && name.equals(c.getNom())){
+                return c.getId_Groupe();
+            }
+        }
+        return 0;
+    }
 
     @Override
     public String toString()throws NullPointerException {
