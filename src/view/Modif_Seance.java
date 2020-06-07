@@ -81,7 +81,7 @@ class Modif_Seance extends JFrame {
         c = getContentPane();
         c.setLayout(null);
 
-        title = new JLabel("Ajouter une séance");
+        title = new JLabel("Modifier une séance");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(300, 30);
         title.setLocation(300, 30);
